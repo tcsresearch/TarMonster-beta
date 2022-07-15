@@ -1,6 +1,6 @@
 ### Backup.sh - This script will backup EspoCRM
 
-### Set Variables ###
+### Set Variables - This section to be depricated by include/tarmonster.conf ###
 # BackupDate = 'date +%Y%m%d'
 BackupSource='crm.tcshosting.net'
 BackupFilePrefix='crm.tcshosting.net'
@@ -8,7 +8,7 @@ BackupFilePrefix='crm.tcshosting.net'
 # BackupFileBz2='crm.tcshosting.net_$BackupDate-1.bz2'
 BackupDestination='_Backups/2022/'
 
-### Functions Code ###
+### Functions Code - This section to be depricated by include/functions ###
 	ShowBackupDate() {
 		date +%Y%m%d
 	}
