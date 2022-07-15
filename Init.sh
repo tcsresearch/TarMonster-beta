@@ -1,6 +1,10 @@
 ### Init.sh - This script will initilize TarMonster.
 
+### Set Program Version ###
+Version = '0.1'
 
+### Display Startup Messages ###
+echo "TarMonster $Version. (c) 2022 TCS Research.  All Rights Reserved."
 
 ### Source Includes ###
 ##  TODO: 	Create Sanity Check Function.
