@@ -8,38 +8,23 @@ BackupFilePrefix='crm.tcshosting.net'
 # BackupFileBz2='crm.tcshosting.net_$BackupDate-1.bz2'
 BackupDestination='_Backups/2022/'
 
-### Functions Code - This section to be depricated by include/functions ###
-	ShowBackupDate() {
-		date +%Y%m%d
-	}
+### Display Program Banner ###
+# Move to Functions?
+echo TarMonster Backup - A TCS Research Project.
 
-	DisplayVars() {
-		### Display Variables ###
-#		echo BackupDate:	$BackupDate
-		echo Backup Source:	$BackupSource
-		echo BackupFilePrefix:	$BackupFilePrefix
-#		echo BackupFileTar: 	$BackupFileTar
-#		echo BackupFileBzip:	$BackupFileBz2
-		echo BackupDestination:	$BackupDestination
-	}
+### Source Functions ###
+# TODO: Modify sanity check to exit if file not found.
+FILE=functions
+if [ -f "$FILE" ]; then
+    echo "$FILE file found."
+else 
+    echo "$FILE file missing or not found."
+fi
 
-	PerformBackup() {
-		### Backup & Compress / Move To Backup Folder ###
-		echo Preparing EspcoCRM Backup...
-		### TODO: Fix use of variables in tar/bzip2 commands
-		echo Performing Backup...
-		tar -cvf $BackupFilePrefix.tar $BackupSource
-		echo Backup Created.
-	}
+echo Loading Functions...
+. functions
+echo Functions Loaded.
 
-	CompressBackup() {
-		echo Compressing Backup...
-		bzip2 -vv $BackupFilePrefix.tar 
-		echo Backup Compression Completed.
-		echo Moving Backup To Backup Folder...
-		mv -v $BackupFilePrefix.bz2 $BackupDestination
-		echo Backup File Moved.
-	}	
 
 ### Call Functions ###
 echo 'Backup Date: ' 
