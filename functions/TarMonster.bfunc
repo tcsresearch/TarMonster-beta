@@ -1,0 +1,107 @@
+## TarMonster.bfunc
+# This is the functions library for TarMonster.
+
+### Now we declare our functions ###
+# TODO: Integrate BLING/Cecho.
+
+function DisplayBanner() {
+	echo "$AppName $AppVesrion - A wrapper for tar/Bzip/Gzip."
+	echo "(c) 2022-2023 TCS Research.  All Rights Reserved."
+}
+
+### Cecho
+function DisplayBanner2() {
+### Banner ###
+echo " "
+
+## $Cecho "${Red} $AppName $AppVersion - An efficient wrapper for tar/Bzip/Gzip.${Color_Off}"
+$Cecho "${Yellow} $AppName $AppVersion ${Red} - An efficient wrapper script for tar/Bzip/Gzip. ${Color_Off}"
+$Cecho "      ${Red}                (c) 2022-2023 TCS Research. All Rights Reserved. ${Color_Off} "
+
+echo " "
+}
+
+
+function DisplayVars() {
+	echo "Today Is: $Today"
+	echo "App Folder: $AppFolder"
+	echo "Backup Folder: $BackupFolder"
+	echo "Backup FileName: $BackupFileName"
+	echo " "
+	echo "Full Backup Path: $FullBackupPath"
+	echo "Backup Command: $BackupCMD"
+	echo "Compress Command: $CompressCMD"
+}
+
+### Cecho.
+function DisplayVars2() {
+	$Cecho "${Red} Today Is: ${Yellow} $Today. ${Color_Off}"
+	$Cecho "${Red} App Folder: ${Yellow} $AppFolder ${Color_Off}"
+	$Cecho "${Red} Backup Folder: ${Yellow} $BackupFolder ${Color_Off}"
+	$Cecho "${Red} Backup FileName: ${Yellow} $BackupFileName ${Color_Off}"
+	$Cecho " "
+	$Cecho "${Red} Full Backup Path: ${Yellow} $FullBackupPath ${Color_Off}"
+	$Cecho "${Red} Backup Command: ${Yellow} $BackupCMD ${Color_Off}"
+	$Cecho "${Red} Compress Command: ${Yellow} $CompressCMD ${Color_Off}"
+}
+
+
+
+
+function SanityChecker() { 
+
+	# AppFolder
+	if [ ! -d "$AppFolder" ]; then
+	  echo "App Folder $AppFolder does not exist."
+	  echo "Exiting..."
+	  exit 1
+	fi
+
+	# BackupFolder
+	if [ ! -d "$BackupFolder" ]; then
+  	  echo "Backup Folder $BackupFolder does not exist."
+	  echo "Exiting..."
+	  exit 2
+	fi
+
+	# For Future Use
+	# if [ ! -d "$DIRECTORY" ]; then
+  	#  echo "$DIRECTORY does not exist."
+	# fi
+}
+
+
+
+function DoBackup() {  
+	## TODO: Remove $Today from commands; already in EspoCRM.vars
+	# tar -cvf crm.tcshosting.net.tar crm.tcshosting.net
+	# tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
+	echo "Creating Backup..."
+	## tar -cvf $BackupFileName.tar $AppFolder
+	$BackupCMD $BackupFileName.tar $AppFolder
+	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
+	# bzip2 -vv crm.tcshosting.net.tar
+	# bzip2 -vv $BackupFileName-$Today
+	# $CompressCMD $BackupFolder/$BackupFileName
+	echo "Backup Created Successfully."
+}
+
+function CompressBackup() {  
+	echo "Compressing Backup File $BackupFileName.tar..."
+	# bzip2 -vv $BackupFileName.tar
+	$CompressCMD $BackupFileName.tar
+	echo "Backup Compressed Successfully."
+}
+
+function MoveBackup() {  
+	echo "Moving Backup File $BackupFileName.tar to Backup Folder $BackupFolder..."
+	mv -v $BackupFileName.tar.bz2 $BackupFolder
+}
+
+function DoUpgrade() { 
+	echo "Performing Upgrade..."
+	cd crm.tcshosting.net
+	php command.php upgrade
+	cd -
+}
+
