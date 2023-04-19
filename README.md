@@ -8,8 +8,10 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 ## Update April 19, 2023
 - Uploaded working copy.
-- Moved previous non-working copy to _OldScripts2.
-- Moved original files to _OldScripts.
+- Added and enabled ColorEcho (Cecho) functionality.
+- Created _DepricatedFolders Folder.
+  - Moved previous non-working copy to _OldScripts2.
+  - Moved original files to _OldScripts.
 - File & folder reorganization.
   - Added functions folder.
   - Added libraries folder.
@@ -17,11 +19,13 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
   - Begin splitting master config file into seperate ones.
   - Moved config files to conf folder.
   - Moved Colors.shlib to libraries folder.
+  - Set main script to use new file/folder locations.
+  - Renamed old main scripts.
 
 
 ## TODO
-- Integrate BLING/Cecho functionality (Cecho is almost ready).
-- Finish implementation of config file split & move.
+- Integrate BLING functionality.
+- Finish implementation of config file split.
 - Add Gzip functionality.
 - Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
 - Check for new releases after upgrading so as to rerun the DoUpgrade function again.
