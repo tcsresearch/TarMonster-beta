@@ -20,7 +20,7 @@ function DisplayVars() {
 	echo "Compress Command: $CompressCMD"
 }
 
-function SanityChecker() { # WORKS!
+function SanityChecker() { 
 
 	# AppFolder
 	if [ ! -d "$AppFolder" ]; then
@@ -44,7 +44,7 @@ function SanityChecker() { # WORKS!
 
 
 
-function DoBackup() {  # WORKS!
+function DoBackup() {  
 	## TODO: Remove $Today from commands; already in EspoCRM.vars
 	# tar -cvf crm.tcshosting.net.tar crm.tcshosting.net
 	# tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
@@ -58,19 +58,19 @@ function DoBackup() {  # WORKS!
 	echo "Backup Created Successfully."
 }
 
-function CompressBackup() {  # WORKS!
+function CompressBackup() {  
 	echo "Compressing Backup File $BackupFileName.tar..."
 	# bzip2 -vv $BackupFileName.tar
 	$CompressCMD $BackupFileName.tar
 	echo "Backup Compressed Successfully."
 }
 
-function MoveBackup() {  # WORKS!
+function MoveBackup() {  
 	echo "Moving Backup File $BackupFileName.tar to Backup Folder $BackupFolder..."
 	mv -v $BackupFileName.tar.bz2 $BackupFolder
 }
 
-function DoUpgrade() {  # WORKS!
+function DoUpgrade() { 
 	echo "Performing Upgrade..."
 	cd crm.tcshosting.net
 	php command.php upgrade
