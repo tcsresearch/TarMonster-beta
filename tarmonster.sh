@@ -9,6 +9,10 @@ source ~/bin/TarMonster.vars
 TODO: Add Sanity Check.
 source ~/bin/TarMonster.bfunc
 
+### Enable ColorEcho Library ###
+TODO: Add Sanity Check.
+source ~/bin/Colors.shlib
+
 ##  Call Functions ###
  DisplayVars
  SanityChecker
