@@ -1,5 +1,5 @@
-## Upgrade-crm.sh
-# This is the functions library for backups and upgrades to ESPOCRM
+## TarMonster.bfunc
+# This is the functions library for TarMonster.
 
 ### Now we declare our functions ###
 # TODO: Integrate BLING/Cecho.
