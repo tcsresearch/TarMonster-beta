@@ -35,14 +35,14 @@ function DisplayVars() {
 
 ### Cecho.
 function DisplayVars2() {
-	$cecho "${Red} Today Is: ${Yellow} $Today. ${Color_Off}"
-	$cecho "${Red} App Folder: ${Yellow} $AppFolder ${Color_Off}"
-	$cecho "${Red} Backup Folder: ${Yellow} $BackupFolder ${Color_Off}"
-	$cecho "${Red} Backup FileName: ${Yellow} $BackupFileName ${Color_Off}"
-	$cecho " "
-	$cecho "${Red} Full Backup Path: ${Yellow} $FullBackupPath ${Color_Off}"
-	$cecho "${Red} Backup Command: ${Yellow} $BackupCMD ${Color_Off}"
-	$cecho "${Red} Compress Command: ${Yellow} $CompressCMD ${Color_Off}"
+	$Cecho "${Red} Today Is: ${Yellow} $Today. ${Color_Off}"
+	$Cecho "${Red} App Folder: ${Yellow} $AppFolder ${Color_Off}"
+	$Cecho "${Red} Backup Folder: ${Yellow} $BackupFolder ${Color_Off}"
+	$Cecho "${Red} Backup FileName: ${Yellow} $BackupFileName ${Color_Off}"
+	$Cecho " "
+	$Cecho "${Red} Full Backup Path: ${Yellow} $FullBackupPath ${Color_Off}"
+	$Cecho "${Red} Backup Command: ${Yellow} $BackupCMD ${Color_Off}"
+	$Cecho "${Red} Compress Command: ${Yellow} $CompressCMD ${Color_Off}"
 }
 
 
