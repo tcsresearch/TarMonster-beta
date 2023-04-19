@@ -1,27 +1,27 @@
-## tarmonster.sh
-# This is the main script for TarMonster.
+## tarmonster3.sh
+# This is the Cecho Enabled / File & Folder Restructured main script for TarMonster.
 
-## First, we will import our variables ##
+## First, we will import our Master Config File ##
 # TODO: Add Sanity Check.
-source ./bin/TarMonster.vars
+source ./conf/TarMonster.conf
 
 ### Next, we import our functions ###
 # TODO: Add Sanity Check.
-source ./bin/TarMonster.bfunc
+source ./functions/TarMonster.bfunc
 
 ### Enable ColorEcho Library ###
 # TODO: Add Sanity Check.
-source ./bin/Colors.shlib
+source ./libraries/Colors.shlib
 
 ##  Call Functions ###
- DisplayBanner
- DisplayVars
+ DisplayBanner2
+ DisplayVars2
  SanityChecker
  
- DoBackup
- CompressBackup
- MoveBackup
+ # DoBackup
+ # CompressBackup
+ # MoveBackup
+ 
  
  # For EspoCRM Only
  # DoUpgrade
-
