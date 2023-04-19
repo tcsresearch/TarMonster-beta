@@ -10,10 +10,17 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - Uploaded working copy.
 - Moved previous non-working copy to _OldScripts2.
 - Moved original files to _OldScripts.
+- File & folder reorganization.
+-- Added functions folder.
+-- Added libraries folder.
+-- Added conf folder.
+-- Begin splitting master config file into seperate ones.
+-- Moved config files to conf folder.
+-- Moved Colors.shlib to libraries folder.
 
 ## TODO
-- Rename files (TarMonster was orignally developed to assist in upgrading EspoCRM).
-- Integrate BLING/Cecho functionality.
+- Integrate BLING/Cecho functionality (Cecho is almost ready).
+- Finish implementation of config file split & move.
 - Add Gzip functionality.
 - Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
 - Check for new releases after upgrading so as to rerun the DoUpgrade function again.
