@@ -14,11 +14,14 @@ TODO: Add Sanity Check.
 source ~/bin/Colors.shlib
 
 ##  Call Functions ###
+ DisplayBanner
  DisplayVars
  SanityChecker
+ 
  DoBackup
  CompressBackup
  MoveBackup
+ 
  # For EspoCRM Only
  # DoUpgrade
 
