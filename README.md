@@ -12,7 +12,7 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - Moved original files to _OldScripts.
 - File & folder reorganization.
 
-### File & folder reorganization Details
+## File & folder reorganization Details
 - Added functions folder.
 - Added libraries folder.
 - Added conf folder.
