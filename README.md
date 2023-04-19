@@ -19,14 +19,6 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
   - Moved Colors.shlib to libraries folder.
 
 
-## File & Folder Reorganization Details
-- Added functions folder.
-- Added libraries folder.
-- Added conf folder.
-- Begin splitting master config file into seperate ones.
-- Moved config files to conf folder.
-- Moved Colors.shlib to libraries folder.
-
 ## TODO
 - Integrate BLING/Cecho functionality (Cecho is almost ready).
 - Finish implementation of config file split & move.
