@@ -13,12 +13,12 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - File & folder reorganization.
 
 ### File & folder reorganization Details
--- Added functions folder.
--- Added libraries folder.
--- Added conf folder.
--- Begin splitting master config file into seperate ones.
--- Moved config files to conf folder.
--- Moved Colors.shlib to libraries folder.
+- Added functions folder.
+- Added libraries folder.
+- Added conf folder.
+- Begin splitting master config file into seperate ones.
+- Moved config files to conf folder.
+- Moved Colors.shlib to libraries folder.
 
 ## TODO
 - Integrate BLING/Cecho functionality (Cecho is almost ready).
