@@ -11,8 +11,15 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - Moved previous non-working copy to _OldScripts2.
 - Moved original files to _OldScripts.
 - File & folder reorganization.
+  - Added functions folder.
+  - Added libraries folder.
+  - Added conf folder.
+  - Begin splitting master config file into seperate ones.
+  - Moved config files to conf folder.
+  - Moved Colors.shlib to libraries folder.
 
-## File & folder reorganization Details
+
+## File & Folder Reorganization Details
 - Added functions folder.
 - Added libraries folder.
 - Added conf folder.
