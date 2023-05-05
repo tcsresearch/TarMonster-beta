@@ -28,4 +28,4 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - Finish implementation of config file split.
 - Add Gzip functionality.
 - Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
-- Check for new releases after upgrading so as to rerun the DoUpgrade function again.
+- [ For EspoCRM] Check for new releases after upgrading so as to rerun the DoUpgrade function again.
