@@ -9,6 +9,7 @@ It is intended to allow for automatic file naming with the date of the backup as
 For now, the primary focus is to create backups and compress them.  Restoring backups will come later.
 
 <hr>
+
 ## Update April 19, 2023
 - Uploaded working copy.
 - Added and enabled ColorEcho (Cecho) functionality.
