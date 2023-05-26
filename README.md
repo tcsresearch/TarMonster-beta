@@ -28,4 +28,10 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - Finish implementation of config file split.
 - Add Gzip functionality.
 - Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
-- [ For EspoCRM] Check for new releases after upgrading so as to rerun the DoUpgrade function again.
+- Enable Plugin Functionality.
+
+## Proposed Plugins
+- [PLUGIN] [EspoCRM-PostUpdateChecker] Check for new releases after upgrading so as to rerun the DoUpgrade function again.
+- [PLUGIN] [WebRoot-Utility] Backup/Restore functionality for /var/www/html, etc.
+- [PLUGIN] [DB-Utility] Backup/Restore MySQL/MariaDB Databases w/ Optional Encryption.
+- [PLUGIN] [BackupCompare] Compares 2 TarMonster archives.
