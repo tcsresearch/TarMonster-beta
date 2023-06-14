@@ -1,0 +1,108 @@
+## Upgrade-crm.sh
+# This is the functions library for backups and upgrades to ESPOCRM
+
+### Now we declare our functions ###
+# TODO: Integrate BLING/Cecho.
+
+function DisplayBanner() {
+	echo "$AppName $AppVesrion - A wrapper for tar/Bzip/Gzip."
+	echo "(c) 2022-2023 TCS Research.  All Rights Reserved."
+	echo " "
+}
+
+function DisplayVars() {  # Tabbed for use with: | column -t -s $'\t'
+	echo "Today Is:			$Today"
+	echo "App Folder:		$AppFolder"
+	echo "Backup Folder:		$BackupFolder"
+#        echo "Backup Folder Test:$BackupFolderTest"
+	echo "Backup FileName:		$BackupFileName"
+	echo " "
+	echo "Full Backup Path:		$FullBackupPath"
+	echo "Backup Command:		$BackupCMD"
+	echo "Compress Command:		$CompressCMD"
+	echo " "
+}
+
+
+function SanityChecker() { # WORKS!
+
+	# AppFolder
+	if [ ! -d "$AppFolder" ]; then
+	  echo "App Folder $AppFolder does not exist."
+	  echo "Exiting..."
+	  exit 1
+	fi
+
+	# BackupFolder
+	if [ ! -d "$BackupFolder" ]; then
+  	  echo "Backup Folder $BackupFolder does not exist."
+	  echo "Exiting..." # Replace with CreateBackupFolder function?
+	  exit 2            # Can I call a function within a function?
+			    # Perhaps I should just add the CreateBackupFolder function code here instead.
+	fi
+
+	# For Future Use
+	# if [ ! -d "$DIRECTORY" ]; then
+  	#  echo "$DIRECTORY does not exist."
+	# fi
+}
+
+function CreateBackupFolder() { # Not in use yet!
+	  echo "Creating Backup Folder $BackupFolder..."
+	  mkdir -p $BackuFolder
+	  echo "Created Backup Folder $BackupFolder Successfully."
+	  echo " "
+}
+
+
+
+function Pause(){
+   read -p "$*"
+}
+
+# ...
+# call it
+### pause 'Press [Enter] key to continue...'
+# rest of the script
+# ...
+
+
+function DoBackup() {  # WORKS!
+	## TODO: Remove $Today from commands; already in EspoCRM.vars
+	# tar -cvf crm.tcshosting.net.tar crm.tcshosting.net
+	# tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
+	echo "Creating Backup..."
+	## tar -cvf $BackupFileName.tar $AppFolder
+	$BackupCMD $BackupFileName.tar $AppFolder
+	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
+	# bzip2 -vv crm.tcshosting.net.tar
+	# bzip2 -vv $BackupFileName-$Today
+	# $CompressCMD $BackupFolder/$BackupFileName
+	echo "Backup Created Successfully."
+	echo " "
+}
+
+function CompressBackup() {  # WORKS!
+	echo "Compressing Backup File $BackupFileName.tar..."
+	# bzip2 -vv $BackupFileName.tar
+	$CompressCMD $BackupFileName.tar
+	echo "Backup Compressed Successfully."
+	echo " "
+}
+
+
+function MoveBackup() {  # WORKS!
+	echo "Moving Backup File $BackupFileName.tar to Backup Folder $BackupFolder..."
+	mv -v $BackupFileName.tar.bz2 $BackupFolder
+	echo " Moved Backup File Successfully."
+	echo " "
+}
+
+
+function DoUpgrade() {  # WORKS!
+	echo "Performing Upgrade..."
+	cd crm.tcshosting.net
+	php command.php upgrade # Use the -y switch to automatically upgrade w/o prompting.
+	cd -
+}
+
