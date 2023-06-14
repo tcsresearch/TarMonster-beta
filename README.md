@@ -28,8 +28,14 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 <hr>
 
+## Update June 11, 2023
+- Uploaded working files.
+
+<hr>
+
 ## TODO
 - Integrate BLING functionality.
+- Merge code from most recent EspoCRM tests.
 - Finish implementation of config file split.
 - Add Gzip functionality.
 - Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
@@ -42,3 +48,4 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - [PLUGIN] [WebRoot-Utility] Backup/Restore functionality for /var/www/html, etc.
 - [PLUGIN] [DB-Utility] Backup/Restore MySQL/MariaDB Databases w/ Optional Encryption.
 - [PLUGIN] [BackupCompare] Compares 2 TarMonster archives.
+
