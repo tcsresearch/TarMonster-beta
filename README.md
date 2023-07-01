@@ -44,11 +44,11 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 <hr>
 
 ## TODO
-- [ ] Integrate BLING functionality.
+- [ ] Integrate BLING functionality. <a href="https://github.com/tcsresearch/tarmonster/issues/4"> See Issue # 4</a>.
 - [x] :heavy_check_mark: Merge code from most recent EspoCRM tests. :heavy_check_mark: - DONE! Needs Testing.
 - [x] :heavy_check_mark: Finish implementation of config file split. :heavy_check_mark: - DONE! Needs testing.
-- [ ] Add Gzip functionality.
-- [ ] Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
+- [ ] Add Gzip functionality. <a href="https://github.com/tcsresearch/tarmonster/issues/5"> See Issue #5</a>.
+- [ ] Add BackupFileName increments. <a href="https://github.com/tcsresearch/tarmonster/issues/3"> See Issue # 3</a>.
 - [ ] :ballot_box_with_check: Enable Plugin Functionality. :ballot_box_with_check: - In Progress.
 
 <hr>
