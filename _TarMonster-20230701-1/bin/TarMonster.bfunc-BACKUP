@@ -1,0 +1,30 @@
+## Upgrade-crm.sh
+# This is the functions library for backups and upgrades to ESPOCRM
+
+### Now we declare our functions ###
+
+function DisplayVars() {
+	echo "Today Is: $Today"
+	echo "Backup Folder: $BackupFolder"
+	echo "Backup FileName: $BackupFileName"
+	echo " "
+	echo "Full Backup Path: $FullBackupPath"
+	echo "Backup Command: $BackupCMD"
+	echo "Compress Command: $CompressCMD"
+}
+
+function DoBackup() {
+	# tar -cvf crm.tcshosting.net.tar crm.tcshosting.net
+	tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
+	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
+	# bzip2 -vv crm.tcshosting.net.tar
+	bzip2 -vv $BackupFileName-$Today
+	# $CompressCMD $BackupFolder/$BackupFileName
+}
+
+function DoUpgrade() {
+	cd crm.tcshosting.net
+	php command.php upgrade
+	cd -
+}
+
