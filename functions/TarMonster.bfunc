@@ -2,10 +2,10 @@
 # This is the functions library for TarMonster.
 
 ### Now we declare our functions ###
-# TODO: Integrate BLING/Cecho.
+# TODO: Integrate BLING/Cecho.  - In Progress
 
 function DisplayBanner() {
-	echo "$AppName $AppVesrion - A wrapper for tar/Bzip/Gzip."
+	echo "$ProgName $ProgVersion - A wrapper for tar/Bzip/Gzip."
 	echo "(c) 2022-2023 TCS Research.  All Rights Reserved."
 }
 
@@ -14,28 +14,44 @@ function DisplayBanner2() {
 ### Banner ###
 echo " "
 
-## $Cecho "${Red} $AppName $AppVersion - An efficient wrapper for tar/Bzip/Gzip.${Color_Off}"
-$Cecho "${Yellow} $AppName $AppVersion ${Red} - An efficient wrapper script for tar/Bzip/Gzip. ${Color_Off}"
+## $Cecho "${Red} $ProgName $ProgVersion - An efficient wrapper for tar/Bzip/Gzip.${Color_Off}"
+$Cecho "${Yellow} $ProgName $ProgVersion ${Red} - An efficient wrapper script for tar/Bzip/Gzip. ${Color_Off}"
 $Cecho "      ${Red}                (c) 2022-2023 TCS Research. All Rights Reserved. ${Color_Off} "
 
 echo " "
 }
 
 
-function DisplayVars() {
-	echo "Today Is: $Today"
-	echo "App Folder: $AppFolder"
-	echo "Backup Folder: $BackupFolder"
-	echo "Backup FileName: $BackupFileName"
-	echo " "
-	echo "Full Backup Path: $FullBackupPath"
-	echo "Backup Command: $BackupCMD"
-	echo "Compress Command: $CompressCMD"
+function DisplayVars() {  # Tabbed for use with: | column -t -s $'\t'
+	echo "Today Is:			$Today"
+	Newline
+	echo "App Name:			$AppName"
+	echo "App Friendly Name:	$AppFriendlyName"
+	echo "Domain Name:		$DomainName"
+	NewLine
+	echo "App Folder:		$AppFolder"
+	echo "Backup Folder:		$BackupFolder"
+	#    echo "Backup Folder Test:$BackupFolderTest"
+	echo "Backup FileName:		$BackupFileName"
+	NewLine
+	echo "Full Backup Path:		$FullBackupPath"
+	echo "Backup Command:		$BackupCMD"
+	echo "Compress Command:		$CompressCMD"
+	NewLine
 }
+
+function NewLine() {
+	echo " "
+}
+
 
 ### Cecho.
 function DisplayVars2() {
 	$Cecho "${Red} Today Is: ${Yellow} $Today. ${Color_Off}"
+	$Cecho "${Red} App Name: ${Yellow} $AppName. ${Color_Off}"
+	$Cecho "${Red} App Friendly Name: ${Yellow} $AppFriendlyName. ${Color_Off}"
+	$Cecho "${Red} Domain Name: ${Yellow} $DomainName. ${Color_Off}"
+	$Cecho " "
 	$Cecho "${Red} App Folder: ${Yellow} $AppFolder ${Color_Off}"
 	$Cecho "${Red} Backup Folder: ${Yellow} $BackupFolder ${Color_Off}"
 	$Cecho "${Red} Backup FileName: ${Yellow} $BackupFileName ${Color_Off}"
@@ -98,7 +114,7 @@ function MoveBackup() {
 	mv -v $BackupFileName.tar.bz2 $BackupFolder
 }
 
-function DoUpgrade() { 
+function DoUpgrade() { # For EspoCRM Only!
 	echo "Performing Upgrade..."
 	cd crm.tcshosting.net
 	php command.php upgrade
