@@ -1,0 +1,137 @@
+### Taken From: https://www.mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install.upgrade
+
+2.5. Upgrading
+This chapter explains how to upgrade an existing MantisBT installation.
+Start by Performing the steps described in Section 2.3, “Pre-installation / upgrade tasks” above.
+
+    Put the site down for maintenance
+
+    cp mantis_offline.php.sample mantis_offline.php
+
+    This will prevent users from using the system while the upgrade is in progress.
+    Always Backup your code, data and config files before upgrading !
+    This includes your Mantis directory, your attachments, and your database. Refer to Section 2.10, “Backups” for details.
+    Copy the configuration files
+    To preserve your system settings, you should copy the files listed below to subdirectory config of the new installation.
+        config_inc.php,
+        custom_strings_inc.php,
+        custom_constants_inc.php and
+        custom_functions_inc.php. 
+
+    Note
+    The above list is not exhaustive. You might also have to copy other custom files specific to your installation such as logo, favicon, css, etc.
+    Copy third party plugins
+    To maintain system functionality, you should copy any additional plugins in the plugins subdirectory.
+    For example on Unix, you could use the following command; it will copy all installed plugins (in local subdirectories or symlinked), excluding bundled ones.
+
+    cd /path/to/mantisbt-OLD/plugins
+    find -maxdepth 1 ! -path . -type d -o -type l |
+        grep -Pv "(Gravatar|MantisCoreFormatting|MantisGraph|XmlImportExport)" |
+        xargs -Idirs cp -r dirs /path/to/mantisbt-NEW/plugins
+
+    Warning
+    Make sure that you do not overwrite any of the bundled plugins as per the list below, with an older version.
+        Avatars via Gravatar (Gravatar)
+        MantisBT Formatting (MantisCoreFormatting)
+        Mantis Graphs (MantisGraph)
+        Import/Export issues (XmlImportExport) 
+    Execute the upgrade script. From your web browser, access
+
+    https://yoursite/mantisbt-NEW/admin/install.php
+
+    where mantisbt-NEW is the name of the directory where the new release was extracted
+    Provide required information for the upgrade
+        high-privileged database account
+        Additional privileges required: INDEX, CREATE, ALTER, and DROP
+        If this account is not specified, the database user will be used. 
+    Click the Install/Upgrade Database button
+    At the end of the upgrade, review and correct any warnings or errors. 
+
+Upgrading large databases
+When processing large databases from versions older than 1.2, the upgrade script may fail during the conversion of date fields, leaving the system in an inconsistent (i.e. partially updated) state.
+In this case, you should simply restart the upgrade process, which will resume where it left off. Note that you may have to repeat this several times, until normal completion.
+Reference: MantisBT issue 12735.
+⁠2.6. Configure your installation
+There are many settings that you can adjust to configure and customize MantisBT. Refer to Chapter 5, Configuration, as well as the config_defaults_inc.php file for in depth explanations of the available options. Check out also Chapter 7, Customizing MantisBT for further options to personalize your installation.
+This step is normally only required for new installations, but when upgrading you may want to review and possibly customize any new configuration options.
+Open or create the file config_inc.php in subfolder config in an editor and add or modify any values as required. These will override the default values.
+You may want to use the provided config_inc.php.sample file as a starting point.
+
+Warning
+you should never edit the config_defaults_inc.php file directly, as it could cause issues with future upgrades. Always store your custom configuration in your own config_inc.php file.
+
+Warning
+The MantisBT configuration files (config_inc.php as well as custom_strings_inc.php, custom_constants_inc.php, custom_functions_inc.php, etc.) should always be saved as UTF-8 without BOM. Failure to do so may lead to unexpected display issues.
+⁠2.7. Post-installation and upgrade tasks
+Instructions in this section are common to both new installations and upgrades, and should be applied after completing either process.
+
+    Test your configuration
+    Load up admin/check/index.php to validate whether everything is setup correctly, and take corrective action as needed.
+    Delete the admin folder
+    Once you have confirmed that the install or upgrade process was successful, you should delete this directory
+
+    rm -r admin
+
+    For security reasons, the scripts within this directory should not be freely accessible on a live MantisBT site, particularly one which is accessible via the Internet, as they can allow unauthorized people (e.g. hackers) to gain technical knowledge about the system, as well as perform administrative tasks.
+
+    Warning
+    Omitting this important step will leave your MantisBT instance exposed to several potentially severe attacks, e.g. issue #23173 (if mysqli.allow_local_infile is enabled in php.ini). 
+
+⁠2.8. Post-installation tasks
+Instructions in this section should only be applied after a new installation
+
+    Login to your bugtracker
+    Use the default Administrator account. The id and password are administrator / root.
+    Create a new Administrator account
+    Go to Manage > Users and create a new account with 'administrator' access level.
+    Disable or delete the default Administrator account
+    Create a new Project
+    Go to Manage > Projects and create a new project 
+
+##########----------########
+
+⁠2.9. Post-upgrade tasks
+Instructions in this section should only be applied after upgrading an existing installation.
+
+    Test the new release
+    Perform any additional testing as appropriate to ensure the new version does not introduce any regressions.
+    Switch the site to the new version
+    The commands below should be executed from the web root (or wherever the mantisbt scripts are installed) and assume that the "live" directory (old version) is named mantisbt and the new release directory is mantisbt-1.3.x.
+
+    mv mantisbt mantisbt-old
+    mv mantisbt-1.3.x mantisbt
+
+    Put the site back on line
+
+    rm mantis_offline.php
+
+    This should be the final step in the upgrade process, as it will let users login again. 
+
+
+##########----------##########
+
+⁠2.10. Backups
+It is strongly recommended to backup your MantisBT database on a regular basis. The method to perform this operation depends on which RDBMS you use.
+Backups are a complex subject, and the specificities of implementing and handling them for each RDBMS are beyond the scope of this document. For your convenience, the section below provides a simple method to backup MySQL databases.
+You should also consider implementing backups of your MantisBT code (which includes your configs and possibly customization), as well as issue attachments (if stored on disk) and project documents.
+
+Warning
+You should always backup your system (code and database) before upgrading !
+⁠2.10.1. MySQL Backups
+MySQL databases are easy to backup using the mysqldump command:
+
+mysqldump -u<username> -p<password> <database name> > <output file>
+
+To restore a backup you will need to have a clean database. Then run:
+
+mysql -u<username> -p<password> <database name> < <input file>
+
+You can also perform both of these tasks using phpMyAdmin
+A good idea is to make a backup script and run it regularly through cron or a task scheduler. Using the current date in the filename can prevent overwriting and make cataloguing easier.
+References and useful links:
+
+    mysqldump documentation
+    Percona XtraBackup
+    AutoMySQLBackup script 
+
+

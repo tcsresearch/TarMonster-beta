@@ -1,0 +1,64 @@
+# This will be our functions library.
+
+# TODO: Add ColorEcho.
+
+function TakeMantisOffline() {
+cp mantis_offline.php.sample mantis_offline.php
+}
+
+function CopyConfigFiles() {
+ # TODO: Place for loop here
+ # TODO: Place file list in separate file, e.g. CstomConfigFles.list
+    config_inc.php
+    custom_strings_inc.php,
+    custom_constants_inc.php
+    custom_functions_inc.php
+}
+
+function BackupMantisBT() {
+	# TODO: Use TarMonster to perform this, as it already provides the necessary working code.
+	#	Create a TarMonster Plugin for this.
+
+}
+
+function CopyThirdPartyPlugins() {
+# Copy third party plugins
+## To maintain system functionality, you should copy any additional plugins in the plugins subdirectory.
+## For example on Unix, you could use the following command; it will copy all installed plugins (in local subdirectories or symlinked), excluding bundled ones.
+
+	# TODO: Replace mantisbt-OLD with a real path
+	cd /path/to/mantisbt-OLD/plugins
+	find -maxdepth 1 ! -path . -type d -o -type l |
+	    grep -Pv "(Gravatar|MantisCoreFormatting|MantisGraph|XmlImportExport)" |
+	    xargs -Idirs cp -r dirs /path/to/mantisbt-NEW/plugins
+}
+
+function SanityCheck_DoNotCopyOlderVersionsOfPlugins () {
+	## WARNING! ###
+	 # Make sure that you do not overwrite any of the bundled plugins as per the list below, with an older version.
+
+	#    Avatars via Gravatar (Gravatar)
+	#    MantisBT Formatting (MantisCoreFormatting)
+	#    Mantis Graphs (MantisGraph)
+	#    Import/Export issues (XmlImportExport)
+
+	# TODO: Needs Code!
+}
+
+function DisplayReadyToUpgradeMessage() {
+	echo "Backup Completed."
+	echo "Execute the upgrade script. From your web browser, access"
+
+	echo "	https://yoursite/mantisbt-NEW/admin/install.php"
+	echo " "
+	echo "where mantisbt-NEW is the name of the directory where the new release was extracted."
+	echo "Provide required information for the upgrade: "
+	echo " "
+	echo "   - high-privileged database account"
+	echo " 	 - Additional privileges required: INDEX, CREATE, ALTER, and DROP"
+    	echo "   - If this account is not specified, the database user will be used." 
+	echo " "
+	echo "  Click the Install/Upgrade Database button"
+	echo "  At the end of the upgrade, review and correct any warnings or errors. "
+}
+

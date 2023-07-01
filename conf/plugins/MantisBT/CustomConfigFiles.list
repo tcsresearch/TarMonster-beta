@@ -1,0 +1,6 @@
+# CustomConfigFiles.list - List of config files to backup
+config_inc.php
+custom_strings_inc.php
+custom_constants_inc.php
+custom_functions_inc.php
+
