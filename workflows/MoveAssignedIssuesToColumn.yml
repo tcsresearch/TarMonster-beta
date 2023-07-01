@@ -1,0 +1,2 @@
+- name: Move Issues to Column
+  uses: kin/gh-action-move-issues-to-column@v1.0
