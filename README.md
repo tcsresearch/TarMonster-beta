@@ -49,7 +49,7 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 - [x] :heavy_check_mark: Finish implementation of config file split. :heavy_check_mark: - DONE! Needs testing.
 - [ ] Add Gzip functionality. <a href="https://github.com/tcsresearch/tarmonster/issues/5"> See Issue #5</a>.
 - [ ] Add BackupFileName increments. <a href="https://github.com/tcsresearch/tarmonster/issues/3"> See Issue # 3</a>.
-- [ ] :ballot_box_with_check: Enable Plugin Functionality. :ballot_box_with_check: - In Progress.
+- [ ] :ballot_box_with_check: Enable Plugin Functionality. :ballot_box_with_check: <a href="https://github.com/tcsresearch/tarmonster/issues/12"> See Issue #12</a>. - In Progress.
 
 <hr>
 
