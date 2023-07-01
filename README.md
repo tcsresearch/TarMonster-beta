@@ -1,5 +1,5 @@
 # TarMonster
-An experimental backup script utilizing tar, gzip, &amp; bzip2.  WIP.
+An experimental backup & restore script utilizing tar, gzip, &amp; bzip2.  WIP.
 
 <hr>
 <ins> <h3> Why Call It TarMonster? </h3> </ins> <br>
@@ -44,12 +44,12 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 <hr>
 
 ## TODO
-- Integrate BLING functionality.
-- :heavy_check_mark: Merge code from most recent EspoCRM tests. :heavy_check_mark: - DONE! Needs Testing.
-- :heavy_check_mark: Finish implementation of config file split. :heavy_check_mark: - DONE! Needs testing.
-- Add Gzip functionality.
-- Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
-- :ballot_box_with_check: Enable Plugin Functionality. :ballot_box_with_check: - In Progress.
+- [ ] Integrate BLING functionality.
+- [x] :heavy_check_mark: Merge code from most recent EspoCRM tests. :heavy_check_mark: - DONE! Needs Testing.
+- [x] :heavy_check_mark: Finish implementation of config file split. :heavy_check_mark: - DONE! Needs testing.
+- [ ] Add Gzip functionality.
+- [ ] Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
+- [ ] :ballot_box_with_check: Enable Plugin Functionality. :ballot_box_with_check: - In Progress.
 
 <hr>
 
