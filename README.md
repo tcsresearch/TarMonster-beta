@@ -2,10 +2,11 @@
 An experimental backup script utilizing tar, gzip, &amp; bzip2.  WIP.
 
 <hr>
+<ins> <h3> Why Call It TarMonster? </h3> </ins> <br>
 TarMonster gets its name from both the Linux program tar and a Scooby-Doo villain.
 
 It is intended to allow for automatic file naming with the date of the backup as part of the filename, e.g. backup-202220626-1.
-<br>
+
 For now, the primary focus is to create backups and compress them.  Restoring backups will come later.
 
 <hr>
@@ -53,8 +54,10 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 <hr>
 
 ## Proposed Plugins
-- [PLUGIN] [EspoCRM-PostUpdateChecker] Check for new releases after upgrading so as to rerun the DoUpgrade function again.
-- [PLUGIN] [WebRoot-Utility] Backup/Restore functionality for /var/www/html, etc.
-- [PLUGIN] [DB-Utility] Backup/Restore MySQL/MariaDB Databases w/ Optional Encryption - In Progress on our MantisBT site.
-- [PLUGIN] [BackupCompare] Compares 2 TarMonster archives.
+- [IN PROGRESS] :ballot_box_with_check: [EspoCRM] Backup/Restore Functionality For EspoCRM. :ballot_box_with_check:
+- [IN PROGRESS] :ballot_box_with_check: [MantisBT] Backup/Restore Functionality For MantisBT. :ballot_box_with_check:
+- [IN PROGRESS] :ballot_box_with_check: [DB-Utility] Backup/Restore MySQL/MariaDB Databases w/ Optional Encryption - In Progress on our MantisBT site. :ballot_box_with_check:
+- [PLANNED] [EspoCRM-PostUpdateChecker] Check for new releases after upgrading so as to rerun the DoUpgrade function again.
+- [PLANNED] [WebRoot-Utility] Backup/Restore functionality for /var/www/html, etc.
+- [PLANNED] [BackupCompare] Compares 2 TarMonster archives.
 
