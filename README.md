@@ -45,19 +45,29 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 ## TODO
 - Integrate BLING functionality.
-- Merge code from most recent EspoCRM tests. - DONE! Needs Testing.
-- Finish implementation of config file split. - DONE! Needs testing.
+- :heavy_check_mark: Merge code from most recent EspoCRM tests. :heavy_check_mark: - DONE! Needs Testing.
+- :heavy_check_mark: Finish implementation of config file split. :heavy_check_mark: - DONE! Needs testing.
 - Add Gzip functionality.
 - Add BackupFileName increments (Currently as 20230419; needs to be 20230419-1 and increment with each backup that day.)
-- Enable Plugin Functionality. - In Progress.
+- :ballot_box_with_check: Enable Plugin Functionality. :ballot_box_with_check: - In Progress.
 
 <hr>
 
-## Proposed Plugins
+## Proposed Plugins - Applications
 - [IN PROGRESS] :ballot_box_with_check: [EspoCRM] Backup/Restore Functionality For EspoCRM. :ballot_box_with_check:
 - [IN PROGRESS] :ballot_box_with_check: [MantisBT] Backup/Restore Functionality For MantisBT. :ballot_box_with_check:
+- [PLANNED] [Apache2] Backup/Restore Functionality For Apache2 (httpd).
+- [PLANNED] [PhpMyAdmin] Backup/Restore Functionality For PhpMyAdmin.
+- [PLANNED] [PhpSysInfo] Backup/Restore Functionality For PhpSysInfo.
+- [PLANNED] [WordPress] Backup/Restore Functionality For WordPress.
+
+<hr> 
+
+## Proposed Plugins - Utilities
 - [IN PROGRESS] :ballot_box_with_check: [DB-Utility] Backup/Restore MySQL/MariaDB Databases w/ Optional Encryption - In Progress on our MantisBT site. :ballot_box_with_check:
 - [PLANNED] [EspoCRM-PostUpdateChecker] Check for new releases after upgrading so as to rerun the DoUpgrade function again.
 - [PLANNED] [WebRoot-Utility] Backup/Restore functionality for /var/www/html, etc.
+- [PLANNED] [BuildRoot-Utility] Backup/Restore functionality for rpmbuild folder on Fedora/RHEL.
+- [PLANNED] [UserDir-Utility] Backup/Restore functionality for user directories, such as home/user1, etc.
 - [PLANNED] [BackupCompare] Compares 2 TarMonster archives.
 
