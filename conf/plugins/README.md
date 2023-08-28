@@ -14,4 +14,18 @@
   <li> <h4> :ballot_box_with_check: Update Config and Test. :ballot_box_with_check: </h4> </li>
   <li> <h4> :heavy_check_mark: Tested and Working as expected. :heavy_check_mark: </h4> </li>
 </ul>
+<hr>
 
+<h4> Current Status Of Plugins</h4>
+<ul>
+  <li> <h4> Apache2:     :x:  Not Implemented. :x: </h4> </li>
+  <li> <h4> phpSysInfo:     :x:  Not Implemented. :x: </h4> </li>
+  <li> <h4> WordPress:     :x:  Not Implemented. :x: </h4> </li>
+  <li> <h4> phpMyAdmin:     :x:  Not Implemented. :x: </h4> </li>
+</ul>
+<ul>
+  <li> <h4> DB-Utility: :ballot_box_with_check: Update Config and Test. :ballot_box_with_check: </h4> </li>
+  <li> <h4> EspoCRM: :ballot_box_with_check: Update Config and Test. :ballot_box_with_check: </h4> </li>
+  <li> <h4> MantisBT: :ballot_box_with_check: Update Config and Test. :ballot_box_with_check: </h4> </li>
+  </ul>
+<hr>
