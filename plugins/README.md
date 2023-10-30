@@ -16,10 +16,10 @@
 
 | Name | Description | Status
 | --- | --- | --- |
-| EspoCRM | Allows for upgrades of EspoCRM via TarMonster | In Development
-| MantisBT | Allows for upgrades of MantisBT via TarMonster | In Development
-| DB-Utility | Allows for backups/restores of MySQL/MariaDB via TarMonster | In Development
-| WebRoot | Allows for upgrades of MantisBT via TarMonster | In Development
-| RPMBuildRoot | Allows for backups & restores of RPM BuildRoot folders via TarMonster | In Development
+| EspoCRM | Allows for upgrades of EspoCRM via TarMonster | In Development / Untested
+| MantisBT | Allows for upgrades of MantisBT via TarMonster | In Development / Untested
+| DB-Utility | Allows for backups/restores of MySQL/MariaDB via TarMonster | In Development / Untested
+| WebRoot | Allows for upgrades of MantisBT via TarMonster | Not Started Yet
+| RPMBuildRoot | Allows for backups & restores of RPM BuildRoot folders via TarMonster | Not Started Yet
 
 <hr>
