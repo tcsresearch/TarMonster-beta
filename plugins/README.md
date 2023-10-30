@@ -1,35 +1,25 @@
-This is the plugins folder for TarMonster.
-
-<hr>
-<h3> :warning: This code is highly experiemental and has NOT been fully implemented or tested yet. :warning: </h3>
-<h4> Testing has NOT been done yet, is NOT suitable for testing, and still lacks most features. </h4>
-<hr>
-
-| Name |Status | Description | 
-| --- | --- | --- |
-| `git status` | Stable | List all *new or modified* files 
-| `git diff` | Testing | Show file differences that **haven't been** staged |
-
-
 <h2> Plugins</h2>
-<ul>
-  <li>EspoCRM:      Allows for upgrades of EspoCRM via TarMonster.</li>
-  <li>MantisBT:     Allows for upgrades of MantisBT via TarMonster.</li>
-  <li>DB-Utility:   Allows for backups & restors of MySQL/MariaDB databases via TarMonster.</li>
-  <li>WebRoot:      Allows for backups & restors of MySQL/MariaDB databases via TarMonster.</li>
-  <li>RpmBuildRoot: Allows for backups & restors of RPM BuildRoot folders via TarMonster.</li>
-</ul>
-
-<hr>
 
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
-
-> [!IMPORTANT]
-> Crucial information necessary for users to succeed.
+> The plugins folder for TarMonster.
+<hr>
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> This code is highly experiemental and has NOT been fully implemented or tested yet.
 
+> [!IMPORTANT]
+> Testing has NOT been done yet, is NOT suitable for testing, and still lacks most features.
+
+<hr>
+<h2>Plugin Status</h2>
+
+
+| Name | Description | Status
+| --- | --- | --- |
+| EspoCRM | Allows for upgrades of EspoCRM via TarMonster | In Development
+| MantisBT | Allows for upgrades of MantisBT via TarMonster | In Development
+| DB-Utility | Allows for backups/restores of MySQL/MariaDB via TarMonster | In Development
+| WebRoot | Allows for upgrades of MantisBT via TarMonster | In Development
+| RPMBuildRoot | Allows for backups & restores of RPM BuildRoot folders via TarMonster | In Development
 
 <hr>
