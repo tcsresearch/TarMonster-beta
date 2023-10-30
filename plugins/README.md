@@ -5,10 +5,10 @@ This is the plugins folder for TarMonster.
 <h4> Testing has NOT been done yet, is NOT suitable for testing, and still lacks most features. </h4>
 <hr>
 
-| Command | Description |
-| --- | --- |
-| `git status` | List all *new or modified* files |
-| `git diff` | Show file differences that **haven't been** staged |
+| Name |Status | Description | 
+| --- | --- | --- |
+| `git status` | Stable | List all *new or modified* files 
+| `git diff` | Testing | Show file differences that **haven't been** staged |
 
 
 <h2> Plugins</h2>
