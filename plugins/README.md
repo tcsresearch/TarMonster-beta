@@ -19,8 +19,8 @@
 | --- | --- | --- |
 | EspoCRM | Allows for upgrades of EspoCRM via TarMonster | In Development / Untested
 | MantisBT | Allows for upgrades of MantisBT via TarMonster | In Development / Untested
-| phpMyAdmin | Allows for upgrades of phpMyAdmin via TarMonster | Not Started Yet
 | phpSysInfo | Allows for upgrades of phpSysInfo via TarMonster | Not Started Yet
+| phpMyAdmin | Allows for upgrades of phpMyAdmin via TarMonster | Not Started Yet
 
 <h3>Utilities</h3>
 
