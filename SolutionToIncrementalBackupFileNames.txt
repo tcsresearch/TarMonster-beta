@@ -1,0 +1,19 @@
+Related
+How do you print a numerically incremented value (Bash, Linux)?
+
+While it’s easy to do a counter, as two others have done, there’s a better way: the “seq” command. The reason I call it better isn’t just that it can do sequences of numbers, e.g.
+$ seq 1 3
+1
+2
+3
+
+But, sometimes, you need leading zeros, too. For example, our hostnames generally end with three digits, so hostfoo-001, hostfoo-002, etc. It’s easy enough to write code for that, but seq makes that WOO easy:
+$ seq -w 001 003
+001
+002
+003
+
+That’s winning. :-)
+Profile photo for Valdis Klētnieks
+Valdis Klētnieks
+Former Computer System Senior Engineer (1989–2018)Author has 15.8K answers and 21.3M answer 
