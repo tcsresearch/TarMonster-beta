@@ -1,3 +1,210 @@
+Taken From: https://unix.stackexchange.com/questions/340010/how-do-i-create-sequentially-numbered-file-names-in-bash
+
+How do I create sequentially numbered file names in bash?
+Asked 7 years, 1 month ago
+Modified 3 years, 10 months ago
+Viewed 69k times
+15
+
+I need a script that will create a file with the next file in a sequence. Each execution of the script should only create one file and the script could be run zero or more times on any given day. The files should be named after the current date in format %y%m%d with the second file having -01 appended, the third file to be created on a given date would have -02 etc. For example:
+
+20170125.txt  // first file create on the day.
+20170125-01.txt // 2nd file
+20170125-02.txt // 3rd file
+
+So far I've got this super basic script that creates my first daily file but I'm stumped as to how to do the incremental numbering after that.
+
+#! /bin/bash
+
+DATE=`date +%Y%m%d`
+touch "$DATE.txt"
+
+    bashshell-scriptscripting
+
+Share
+Improve this question
+Follow
+edited Jan 25, 2017 at 11:02
+asked Jan 25, 2017 at 10:56
+Greg B's user avatar
+Greg B
+32122 gold badges33 silver badges99 bronze badges
+
+    Are you trying to split up a log or something? What's the real aim? – 
+    bayindirh
+    Jan 25, 2017 at 11:03
+    I'm creating some web pages and I just want a quick script to save me the hassle of creating a matching HTML, JS and CSS file. I just want to do ./newsketch.sh and have all the boilerplate ready to go. – 
+    Greg B
+    Jan 25, 2017 at 11:05
+    Ah, ok. Let me think then. – 
+    bayindirh
+    Jan 25, 2017 at 11:07
+
+Add a comment
+4 Answers
+Sorted by:
+19
+
+today=$( date +%Y%m%d )   # or: printf -v today '%(%Y%m%d)T' -1
+number=0
+
+fname=$today.txt
+
+while [ -e "$fname" ]; do
+    printf -v fname '%s-%02d.txt' "$today" "$(( ++number ))"
+done
+
+printf 'Will use "%s" as filename\n' "$fname"
+touch "$fname"
+
+today gets today's date, and we initialise our counter, number, to zero and create the initial filename as the date with a .txt suffix.
+
+Then we test to see if the filename already exists. If it does, increment the counter and create a new filename using printf. Repeat until we no longer have a filename collision.
+
+The format string for the printf, %s-%02d.txt, means "a string followed by a literal dash followed by a zero-filled two-digit integer and the string .txt". The string and the integer is given as further arguments to printf.
+
+The -v fname puts the output of printf into the variable fname.
+
+The touch is just there for testing.
+
+This will generate filenames like
+
+20170125.txt
+20170125-01.txt
+20170125-02.txt
+20170125-03.txt
+
+etc. on subsequent runs.
+Share
+Improve this answer
+Follow
+edited Apr 14, 2020 at 13:33
+answered Jan 25, 2017 at 11:49
+Kusalananda's user avatar
+Kusalananda♦
+331k3737 gold badges667667 silver badges964964 bronze badges
+
+    4
+    Bonus points for the explanation. – 
+    Greg B
+    Jan 25, 2017 at 20:15
+
+Add a comment
+6
+
+You can use seq. It can create number sequences in variety of ways, however you need to know total number of files.
+
+E.g: You can try seq -w 1 10. It will create the sequence from 01 to 10, then you can include it in a for loop:
+
+for i in `seq -w 1 10`
+do
+  touch `date +%Y%m%d`-$i.txt
+done
+
+Addendum for your latest question update:
+
+To accomplish what you want easily, you can create the first file with -0. On subsequent runs, you need to take the list of files, sort them, take the last one, cut it from last - and get the number, increment it and create the new file with that number.
+
+Padding will need some more work though.
+Share
+Improve this answer
+Follow
+edited Jan 25, 2017 at 11:33
+answered Jan 25, 2017 at 11:02
+bayindirh's user avatar
+bayindirh
+96911 gold badge88 silver badges1919 bronze badges
+
+    I've updated the question with a bit more info. The script should only create one file on each execution, the file should have the next number in the sequence. – 
+    Greg B
+    Jan 25, 2017 at 11:04
+    3
+    There are more advanced facilities in Linux, like logrotate. They can do something similar automatically if you need. Your question needs some processing, so it may not be trivial with bash. That's why I asked the real reason. – 
+    bayindirh
+    Jan 25, 2017 at 11:05
+    1
+    @bayindirh logrotate is useful for rotating logs, but the question is about generating filenames, not rotating logfiles. – 
+    Kusalananda
+    ♦
+    Jan 25, 2017 at 11:58
+    1
+    I know, in first iteration of the question, aim was not clear. So I asked the question owner and he clarified. Please see the comments under the question too. I just didn't delete my comment to left the thing up in the air. – 
+    bayindirh
+    Jan 25, 2017 at 12:18
+
+Add a comment
+3
+
+Something like...
+
+#!/bin/bash
+DATE=$(date +%Y%m%d)
+filename="${DATE}.txt"
+num=0
+while [ -f $filename ]; do
+    num=$(( $num + 1 ))
+    filename="${DATE}-${num}.txt"
+done
+touch $filename
+
+...should work. This creates filenames of the format DATE-1.txt, DATE-2.txt, DATE-3.txt, ..., DATE-10.txt, DATE-11.txt, etc. Changing that to DATE-01.txt etc is left as an exercise to the reader :)
+
+Note that you should probably also make sure you don't call the script more than once concurrently, otherwise you'll have more than one script modifying things.
+
+Side note: there is loads of software for managing multiple versions of a file. They're called "version control systems" (VCS), or "Source Control Management" (SCM). Git and subversion are pretty popular. I suggest you check them out, rather than reimplementing your own :-)
+Share
+Improve this answer
+Follow
+answered Jan 25, 2017 at 11:34
+Wouter Verhelst's user avatar
+Wouter Verhelst
+9,3312020 silver badges4545 bronze badges
+
+    1
+    Please read Security implications of forgetting to quote a variable in bash/POSIX shells – 
+    glenn jackman
+    Jan 25, 2017 at 14:45
+    try filename=$(printf "%s-%0d.txt" "$date" "$num") – 
+    glenn jackman
+    Jan 25, 2017 at 14:46
+    @glennjackman what that link points to is very true for variables of which you're not sure you'll know the contents, but not so for cases like these where (format of) the contents of the variable is known. In this script, $DATE is always YYYYMMDD, and $num is always a number. In that case, there are no security implications. If you think otherwise, please provide the proof. Is it bad style? Perhaps, but then shell scripts are bad style programming to begin with :-) – 
+    Wouter Verhelst
+    Jan 25, 2017 at 14:59 
+
+    4
+    My view is that you follow best practices or you don't – 
+    glenn jackman
+    Jan 25, 2017 at 15:14
+    well, we disagree then :) – 
+    Wouter Verhelst
+    Jan 25, 2017 at 15:24
+
+Show 4 more comments
+0
+
+If you already have the counter value in an environment variable, you can use Bash arithmetic to generate the filename .... the $(( ctr+=1 )) increments the value of ctr, and substitutes the value in the filename string.
+
+$ ctr=0
+$ touch file-$(( ctr+=1 ))-name.txt
+$ touch file-$(( ctr+=1 ))-name.txt
+$ touch file-$(( ctr+=1 ))-name.txt
+$ touch file-$(( ctr+=1 ))-name.txt
+$ ls
+file-1-name.txt  file-2-name.txt file-3-name.txt  file-4-name.txt
+
+Share
+Improve this answer
+Follow
+answered Feb 7, 2018 at 11:22
+MikeW's user avatar
+MikeW
+23033 silver badges88 bronze badges
+Add a comment
+
+
+
+_________________________________________________________________________________________________
+
 Related
 How do you print a numerically incremented value (Bash, Linux)?
 
