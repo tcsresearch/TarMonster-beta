@@ -1,5 +1,16 @@
 # TarMonster
-An experimental backup & restore script utilizing tar, gzip, &amp; bzip2.
+
+> [!NOTE]
+> An experimental backup & restore script utilizing tar, gzip, &amp; bzip2.
+<hr>
+
+> [!WARNING]
+> This code is highly experiemental and has NOT been fully implemented or tested yet.
+<hr>
+
+> [!IMPORTANT]
+> Testing has NOT been done yet, is NOT suitable for testing, and still lacks most features.
+
 
 <hr>
 <h3> :warning: This code is highly experiemental and has NOT been fully implemented or tested yet. :warning: </h3>
