@@ -32,7 +32,7 @@
 
 | Name | Description | Status
 | --- | --- | --- |
-| WebRoot | Allows for upgrades of MantisBT via TarMonster | Not Started Yet
+| WebRoot | Allows for upgrades of Webroot folder via TarMonster | Not Started Yet
 | UserFolders | Allows for backups & restores of User folders via TarMonster | Not Started Yet
 | RPMBuildRoot | Allows for backups & restores of RPM BuildRoot folders via TarMonster | Not Started Yet
 <hr>
