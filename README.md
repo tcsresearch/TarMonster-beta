@@ -32,9 +32,6 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 <hr>
 
-
-<hr>
-
 ## Update August 1, 2023 - UNTESTED!
 - Uploaded test code to _TarMonster-20230701-1 folder.
 - Completed majority of config file split.
