@@ -1,0 +1,35 @@
+# 'File exists.' if the file is present
+# 'File does not exist.' if the file is not present
+
+### Specify a SINGLE filename
+
+filename='/path/to/file'
+
+if [ -f $filename ]; then
+    echo 'The file exists.'
+else
+    echo 'The file does not exist.'
+fi
+
+# Output:
+# 'The file exists.' if the file is present
+# 'The file does not exist.' if the file is not present
+
+### Specify MULTIPLE file names
+# TODO: Create a file list and modify to accomidate
+#
+filenames=('/path/to/file1' '/path/to/file2' '/path/to/file3')
+
+for filename in ${filenames[@]}; do
+    if [ -f $filename ]; then
+        echo "$filename exists."
+    else
+        echo "$filename does not exist."
+    fi
+done
+
+# Output:
+# '/path/to/file1 exists.' if file1 is present
+# '/path/to/file2 does not exist.' if file2 is not present
+# '/path/to/file3 exists.' if file3 is present
+

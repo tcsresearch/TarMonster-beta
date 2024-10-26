@@ -1,0 +1,6 @@
+### Usage ###
+function Usage() {
+echo "cecho <color> <text>"
+echo "Where <color> is one of black/red/green/yellow/blue/purple/cyan/gray"
+echo "and <text> is what you want to be echoed."
+}

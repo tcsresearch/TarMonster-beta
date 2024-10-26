@@ -1,0 +1,36 @@
+# 'Folder exists.' if the folder is present
+# 'Folder does not exist.' if the folder is not present
+
+### Specify a SINGLE foldername
+
+foldername='/path/to/folder'
+
+if [ -d $foldername ]; then
+    echo 'The folder exists.'
+else
+    echo 'The folder does not exist.'
+fi
+
+# Output:
+# 'The folder exists.' if the folder is present
+# 'The folder does not exist.' if the folder is not present
+
+### Specify MULTIPLE folder names
+# TODO: Create a folder list and modify to use it.
+#
+foldernames=('/path/to/folder1' '/path/to/folder2' '/path/to/folder3')
+
+for foldername in ${foldernames[@]}; do
+    if [ -d $foldername ]; then
+        echo "$foldername exists."
+    else
+        echo "$foldername does not exist."
+    fi
+done
+
+# Output:
+# '/path/to/folder1 exists.' if folder1 is present
+# '/path/to/folder2 does not exist.' if folder2 is not present
+# '/path/to/folder3 exists.' if folder3 is present
+
+                        

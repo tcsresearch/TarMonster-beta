@@ -1,0 +1,13 @@
+function DisplayLine() {
+        cecho blue "__________________________________________________________________"
+}
+
+function ShowEmptyLine() {
+        echo " "
+}
+
+function DisplayLine2() {
+        echo " "
+        cecho blue "__________________________________________________________________"
+        echo " "
+}

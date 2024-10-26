@@ -1,0 +1,21 @@
+# Taken From: https://unix.stackexchange.com/questions/70615/bash-script-echo-output-in-box
+# USAGE: Multi line banners are generated like `banner ${COLOR} ${OPTIONAL_SECONDCOLOR} "first line" "second line" "third line"`
+#
+function banner() {
+    local s=("${@:3}") b w
+    local second_color=$2
+    if [[ ! "$second_color" =~ "\e[".* ]]; then #If the second color isn't declared, then make the function use only the first color declared
+        local s=("${@:2}") b w
+        local second_color=$1
+    fi
+
+    for l in "${s[@]}"; do
+        ((w<${#l})) && { b="         $l         "; w="${#l}"; }
+    done
+    echo -ne $1
+    echo "-${b//?/-}-"
+    for l in "${s[@]}"; do
+        printf '         %s%*s%s         \n' "$(echo -ne $second_color)" "-$w" "$l" "$(echo -ne $1)"
+    done
+    echo -e "-${b//?/-}-${NC}"
+}
