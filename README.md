@@ -17,7 +17,6 @@
 <h4> Testing has gone well so far, and can be considered somewhat suitable for testing, but still lacks most features. </h4>
 <hr>
 
-<hr>
 <ins> <h3> Why Call It TarMonster? </h3> </ins> <br>
 TarMonster gets its name from both the Linux program tar and a Scooby-Doo villain.
 
