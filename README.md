@@ -17,13 +17,17 @@
 <h4> Testing has gone well so far, and can be considered somewhat suitable for testing, but still lacks most features. </h4>
 <hr>
 
-<hr>
 <ins> <h3> Why Call It TarMonster? </h3> </ins> <br>
 TarMonster gets its name from both the Linux program tar and a Scooby-Doo villain.
 
 It is intended to allow for automatic file naming with the date of the backup as part of the filename, e.g. backup-202220626-1.
 
 For now, the primary focus is to create backups and compress them.  Restoring backups will come later.
+
+<hr>
+
+## Update October 25, 2024 - UNTESTED!
+- Added several fucntions from BLING into the functions folder.
 
 <hr>
 
