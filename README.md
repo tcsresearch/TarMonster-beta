@@ -27,6 +27,14 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 <hr>
 
+## Update October 25, 2024 - UNTESTED!
+- Added several fucntions from BLING into the functions folder.
+
+<hr>
+
+
+<hr>
+
 ## Update August 1, 2023 - UNTESTED!
 - Uploaded test code to _TarMonster-20230701-1 folder.
 - Completed majority of config file split.
