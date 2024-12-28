@@ -1,5 +1,7 @@
 #/bin/bash
 
+## This is the latest and greatest version of Cecho, as of November 2024. ##
+#
 cecho() {
         local code="\033["
         case "$1" in
@@ -13,22 +15,35 @@ cecho() {
                 gray   | gr) color="${code}0;37m";;
 	#### Default case.
              #   *) local text="$1"
-             *) local text="Usage: cecho <color> <text> - text must be inside double quotes."
+             *) Usage ;;
+
+	## This line is disabled and can be safely removed after further testing.
+	# local text="Usage: cecho <color> <text> - text must be inside double quotes."
         esac
         [ -z "$text" ] && local text="$color$2${code}0m"
         echo -e "$text"
 }
 
+## This function has been merged into Usage() ##
 ### Test Display - WORKS!! ###
-function DisplayTest() {
-cecho b "This is blue"
-cecho r "This is red"
-cecho yellow "This is yellow"
+function Test_Cecho() {
+	cecho b "This is blue"
+	cecho r "This is red"
+	cecho yellow "This is yellow"
 }
 
 ### Usage ###
 function Usage() {
-echo "cecho <color> <text>"
-echo "Where <color> is one of black/red/green/yellow/blue/purple/cyan/gray"
-echo "and <text> is what you want to be echoed."
+	echo " Usage: cecho <color> <text> - text MUST be inside double quotes to work."
+	echo "	Where <color> is one of black/red/green/yellow/blue/purple/cyan/gray"
+	echo "	and <text> is what you want to be echoed."
+	echo " "
+	echo "If the following lines have no color, then cecho is NOT loaded."
+	echo " "
+	cecho r "This is RED."  && echo "Result Of: cecho red \"This is RED.\" "
+	echo " "
+	cecho g "This is GREEN." && echo "Result Of: cecho green \"This is GREEN.\" "
+	echo " "
+	cecho b "This is BLUE." && echo "Result Of: cecho blue \"This is BLUE.\" "
+	echo " "
 }
