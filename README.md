@@ -5,11 +5,11 @@
 <hr>
 
 > [!WARNING]
-> This code is highly experiemental and has NOT been fully implemented or tested yet.
+> This code is highly experiemental and has NOT been fully implemented or tested.
 <hr>
 
 > [!IMPORTANT]
-> Testing has NOT been done yet, is NOT suitable for testing, and still lacks most features.
+> Code is NOT suitable for production, and still lacks most features.
 
 
 <hr>
@@ -26,12 +26,12 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 <hr>
 
-## Update October 25, 2024 - UNTESTED!
-- Added several fucntions from BLING into the functions folder.
+## Update October 25, 2024 - 0.5.2.3 - UNTESTED!
+- Added several functions from BLING into the functions folder.
 
 <hr>
 
-## Update August 1, 2023 - UNTESTED!
+## Update August 1, 2023 - 0.5.2.2 - UNTESTED!
 - Uploaded test code to _TarMonster-20230701-1 folder.
 - Completed majority of config file split.
 - Renamed $AppName and $AppVersion to $ProgName and $ProgVersion.
