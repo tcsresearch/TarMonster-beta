@@ -5,7 +5,8 @@
 <hr>
 
 > [!WARNING]
-> This code is highly experiemental and has NOT been fully implemented or tested.
+> This code is highly experiemental and has NOT been fully implemented or tested yet. <br>
+> Testing has gone well so far, and can be considered somewhat suitable for testing, but still lacks most features.
 <hr>
 
 > [!IMPORTANT]
@@ -13,7 +14,7 @@
 
 
 <hr>
-<h3> :warning: This code is highly experiemental and has NOT been fully implemented or tested yet. :warning: </h3>
+<h3> :warning: This code is highly experiemental and has NOT been fully tested yet. :warning: </h3>
 <h4> Testing has gone well so far, and can be considered somewhat suitable for testing, but still lacks most features. </h4>
 <hr>
 
@@ -23,6 +24,13 @@ TarMonster gets its name from both the Linux program tar and a Scooby-Doo villai
 It is intended to allow for automatic file naming with the date of the backup as part of the filename, e.g. backup-202220626-1.
 
 For now, the primary focus is to create backups and compress them.  Restoring backups will come later.
+
+<hr>
+
+## Update May 07, 2025 - 0.5.2.4 - UNTESTED!
+- Merged 0.5.2.2.c branch and improved with several fixes, new files, and modifications.
+
+<hr>
 
 <hr>
 
