@@ -1,0 +1,31 @@
+2025
+- Update to TarMonster 0.5.2.3 (currently 0.5.2.2)
+
+- Fix memeory exhausted error by adding the following to DoUpgrade function:
+	'php -d memory_limit=524M command.php upgrade'
+  This would replace the existing line 'php command.php upgrade'
+  After revising, update TarMonster version to 0.5.2.4.
+
+- New Year?  Year folder is not automatically created.
+ The backup file is wrongly renamed as the year if the folder does not exist.
+ Fix with a sanity check.
+ Try using the CreateBackupFolder function.
+
+- Upload GetCurrentAppVersion3.sh / Obsolele old versions.
+
+- Add ColorBox and Newline functions into BLING Folder.
+
+- Enable Cecho. [DONE!]
+    Add cecho instead of echo to scripts.
+
+- Upload any additional scripts and ProgressBar.txt
+
+- Fix issue where files fail to source in scripts, esp. with folders. [TESTING]
+
+
+
+2024
+- use the the contents of grep.txt to check for additional upgrades:
+	e.g.	[ upgrade_function | grep 'grep.txt contents' ]
+
+- Create an if then statement to run SecondaryUpgrade.sh when grep string found.
