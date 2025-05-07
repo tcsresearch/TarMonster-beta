@@ -1,0 +1,15 @@
+Taken From: https://billusion.blogspot.com/2014/02/gzipbzip2-progress-indicator.html
+
+GZIP/BZIP2 progress indicator
+Have you ever needed to figure out how long gzip/bzip compression would take for the file and found it difficult to present it to the user ? Especially for scripts dealing with large files, this would be one of the major usability issues. Well there's a solution for the problem with the use of tool called pipe viewer. You can find more details on how to use it on it's home page, but I'll show you how I've used it to show progress for bzip2 compression of large files.
+
+filename="file_to_bzip2"
+size=`stat -L "$filename" -c "%s"`
+pv -s $size "$filename" | bzip2 -c > "$filename.bz2"
+
+Generates following output:
+
+# output
+2.75GB 0:32:47 [ 1.5MB/s] [===================>     ] 61% ETA 0:20:16
+
+
