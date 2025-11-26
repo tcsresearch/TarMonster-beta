@@ -1,5 +1,7 @@
 # TarMonster
 
+<img src="https://github.com/tcsresearch/TarMonster-beta/blob/main/TarMonster-Logo.png">
+
 > [!NOTE]
 > An experimental backup & restore script utilizing tar, gzip, &amp; bzip2.
 <hr>
