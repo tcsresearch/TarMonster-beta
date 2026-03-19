@@ -58,7 +58,7 @@ function SanityChecker() { # WORKS!
 
 function CreateBackupFolder() { # Not in use yet!
 	  echo "Creating Backup Folder $BackupFolder..."
-	  mkdir -p $BackuFolder
+	  mkdir -p $BackupFolder
 	  echo "Created Backup Folder $BackupFolder Successfully."
 	  echo " "
 }
