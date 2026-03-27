@@ -1,0 +1,55 @@
+detect_compression_type() {
+    local filename="$1"
+    if [[ -z "$filename" ]]; then
+        echo "Error: No filename provided."
+        return 1
+    fi
+
+    # Use the 'file' command to inspect the file's contents
+    local file_info=$(file -b --mime-type "$filename")
+
+    case "$file_info" in
+        *application/gzip*)
+            echo "gzip"
+            ;;
+        *application/x-bzip2*)
+            echo "bzip2"
+            ;;
+        *application/x-xz*)
+            echo "xz"
+            ;;
+        *application/x-tar*)
+            echo "tar"
+            ;;
+        *)
+            echo "unknown"
+            ;;
+    esac
+}
+
+# Example usage:
+# Create dummy files for testing
+touch archive.tar
+gzip archive.tar
+bzip2 archive.tar.gz
+xz archive.tar.bz2
+
+echo "archive.tar.gz: $(detect_compression_type archive.tar.gz)"
+echo "archive.tar.bz2: $(detect_compression_type archive.tar.bz2)"
+echo "archive.tar.xz: $(detect_compression_type archive.tar.xz)"
+
+# Clean up dummy files
+rm archive.tar.gz archive.tar.bz2 archive.tar.xz
+
+
+##################################################################################################################
+
+extract_archive() {
+    local filename="$1"
+    tar -xaf "$filename"
+    # -x: extract, -a: auto-detect compression, -f: specify filename
+}
+
+# Example usage:
+# extract_archive my_archive.tar.gz
+
