@@ -1,0 +1,10 @@
+Explanation
+
+    file -b --mime-type "$filename":
+        file is a standard Linux utility that determines file types.
+        -b tells file not to prepend the filename to the output.
+        --mime-type provides a consistent output format for easy parsing in the script.
+    case statement: This checks the output of the file command against known MIME types associated with each compression format. This approach is more robust than checking file extensions, which can be easily changed or missing. 
+
+Alternative Method (using tar auto-detect)
+For extraction purposes within a script, the tar command has an auto-detect feature (-a for GNU tar) that can handle most common compressed formats without explicitly specifying the compression flag (-z, -j, or -J). 
