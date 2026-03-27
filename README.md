@@ -29,6 +29,15 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 <hr>
 
+## Update Mar 27, 2026 - 0.5.2.5 - UNTESTED!
+- Added CompressionFeatures.bfunc for detecting tar/bzip/gz/xz. (Code exists, not tested or sourced!)
+- Added README-CompressionFeatures
+- Misc fixes in TarMonster.bfunc
+
+<hr>
+
+<hr>
+
 ## Update May 07, 2025 - 0.5.2.4 - UNTESTED!
 - Merged 0.5.2.2.c branch and improved with several fixes, new files, and modifications.
 
