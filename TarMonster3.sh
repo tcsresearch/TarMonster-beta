@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # echo "Enabling Cecho..."
 # FIXME: Add Cecho.bfunc
 # source Cecho.bfunc
