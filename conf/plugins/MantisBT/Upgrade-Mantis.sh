@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## Upgrade-Mantis.sh
 # This script will backup and upgrade MantisBT
 
