@@ -10,7 +10,7 @@ cd $AppFolder
 echo "Performing Secondary Upgrade..."
 $Command
 echo "Reverting to Original Folder..."
-cd -
+cd ... || return # use instead of 'cd -' (per shellcheck)
 echo "Secondary Upgrade Completed."
 
 ## Run Program (No Vars) ##
