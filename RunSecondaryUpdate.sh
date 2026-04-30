@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## Setup Vars ###
 AppFolder='crm.tcshosting.net'
 Command='php command.php upgrade'
