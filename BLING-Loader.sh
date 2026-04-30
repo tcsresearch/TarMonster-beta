@@ -17,9 +17,9 @@ echo " "
 		### Source Libraries ###
 		echo -e `cat BLING_Functions.list`
 		source `cat BLING_Functions.list`
-		cd -
+		cd ... || return # use instead of 'cd -' (per shellcheck)
 		echo "BLING Libraries Loaded Successfully."
-		cd -
+		cd ... || return # use instead of 'cd -' (per shellcheck)
 	else
 		# cecho red "ERROR: Folder does not exists: $BLING_Libs_Folder"
 		echo "ERROR: Folder does not exist: $BLING_Libs_Folder"
