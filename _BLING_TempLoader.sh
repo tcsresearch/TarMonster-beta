@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 cd BLING
 pwd
 #  source Cecho.bfunc CommandExists.bfunc Pause.bfunc Today.bfunc die.bfunc duls.bfunc
