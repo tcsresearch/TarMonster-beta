@@ -6,7 +6,7 @@ Command='php command.php upgrade'
 
 ## Run Command (With Vars) ##
 echo "Switching to $AppFolder..."
-cd $AppFolder
+cd "$AppFolder" || return 1
 echo "Performing Secondary Upgrade..."
 $Command
 echo "Reverting to Original Folder..."
