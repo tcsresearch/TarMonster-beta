@@ -19,7 +19,7 @@ if [ -d "$BLING_Libs_Folder" ]; then
     		# cecho blue "Processing BLING Library: "
     		echo -e "$BLING_LibraryFile"
     		source "$BLING_LibraryFile"
-	cd -
+	cd ... || return # use instead of 'cd -' (per shellcheck)
 	done
 else
   # cecho red "ERROR: Folder does not exist: $BLING_Libs_Folder"
@@ -36,9 +36,9 @@ function Loader() {
 		# Folder exists, start the for loop
 		cd "$BLING_Library_Folder"
 		sh BLING_TempLoader.sh
-		cd -
+		cd ... || return # use instead of 'cd -' (per shellcheck)
 		echo "BLING Libraries Loaded Successfully."
-		cd -
+		cd ... || return # use instead of 'cd -' (per shellcheck)
 	else
 		# cecho red "ERROR: Folder does not exists: $BLING_Libs_Folder"
 		echo "ERROR: Folder does not exist: $BLING_Libs_Folder"
