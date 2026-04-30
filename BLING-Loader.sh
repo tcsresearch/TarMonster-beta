@@ -9,11 +9,11 @@ echo " "
 
 	if [ -d "BLING_Libs_Folder" ]; then
 		echo "Library Folder Exists: [OK]"
-		cd "$BLING_Libs_Folder"
+		cd "$BLING_Libs_Folder" || return
 		# cecho blue "Processing BLING Library File: "
 		  echo "Processing BLING Library Files: "
 		# Folder exists, start the for loop
-		  cd "$BLING_Libs_Folder" # Fixed from $BLING_Libraries_Folder
+		  cd "$BLING_Libs_Folder" || return # Fixed from $BLING_Libraries_Folder
 		### Source Libraries ###
 		  echo -e $(cat BLING_Functions.list)
 		  source $(cat BLING_Functions.list)
