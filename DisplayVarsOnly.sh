@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## DisplayVarsOnly.sh
 # This script will display the variables for TarMonster.
 
