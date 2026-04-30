@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd crm.tcshosting.net
+cd crm.tcshosting.net || return 1
 echo "Current EspoCRM Vesrion Is:"
 php command.php version
 echo " "
