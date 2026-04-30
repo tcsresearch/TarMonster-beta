@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## TarMonster.sh
 # This script will backup and upgrade the selcted app.
 
