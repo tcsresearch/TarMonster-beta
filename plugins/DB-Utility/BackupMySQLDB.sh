@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # 2.10.1. MySQL Backups
 # MySQL databases are easy to backup using the mysqldump command:
 
