@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## tarmonster3.sh
 # This is the Cecho Enabled / File & Folder Restructured main script for TarMonster.
 # Currently set as DisplayVarsOnly.
