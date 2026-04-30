@@ -1,5 +1,11 @@
 name: ShellCheck
-on: [push, pull_request]
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
 
 jobs:
   shellcheck:
