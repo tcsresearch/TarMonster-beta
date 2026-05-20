@@ -4,10 +4,11 @@
 # This script will backup and upgrade the selcted app.
 
 ## First, we will import our variables ##
+# shellcheck source=/dev/null
 source ~/bin/TarMonster.vars
 
 ### Next, we import our functions ###
-
+# shellcheck source=/dev/null
 source ~/bin/TarMonster.bfunc
 
 ##  Call Functions ###
