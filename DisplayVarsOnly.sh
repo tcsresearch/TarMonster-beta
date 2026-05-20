@@ -4,10 +4,11 @@
 # This script will display the variables for TarMonster.
 
 ## First, we will import our variables ##
+# shellcheck source=/dev/null
 source ~/bin/TarMonster.vars
 
 ### Next, we import our functions ###
-
+# shellcheck source=/dev/null
 source ~/bin/TarMonster.bfunc
 
 ##  Call Functions ###
