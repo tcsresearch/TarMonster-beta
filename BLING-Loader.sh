@@ -15,6 +15,7 @@ echo " "
 		# Folder exists, start the for loop
 		  cd "$BLING_Libs_Folder" || return # Fixed from $BLING_Libraries_Folder
 		### Source Libraries ###
+		  # shellcheck source=/dev/null  
 		  echo -e "$(cat BLING_Functions.list)"
 		  source "$(cat BLING_Functions.list)"
 		  cd ... || return # use instead of 'cd -' (per shellcheck)
