@@ -5,10 +5,11 @@
 # This script will display the variables for the app or plugin.
 
 ## First, we will import our variables ##
+# shellcheck source=/dev/null
 source ~/bin/MantisBT.vars
 
 ### Next, we import our functions ###
-
+# shellcheck source=/dev/null
 source ~/bin/MantisBT.bfunc
 
 ##  Call Functions ###
