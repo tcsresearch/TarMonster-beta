@@ -17,6 +17,7 @@ if [ -d "$BLING_Libs_Folder" ]; then
   	# Folder exists, start the for loop
   	for BLING_LibraryFile in "$BLING_Libs_Folder"/*.bfunc; do
     		# cecho blue "Processing BLING Library: "
+			# shellcheck source=/dev/null
     		echo -e "$BLING_LibraryFile"
     		source "$BLING_LibraryFile"
 	cd ... || return # use instead of 'cd -' (per shellcheck)
