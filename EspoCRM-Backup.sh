@@ -12,7 +12,8 @@ function printExitError() {
     local red='\033[0;31m'
     local default='\033[0m'
 
-    printf "\n${red}ERROR${default}: ${messsage}\n"
+    ### printf "\n${red}ERROR${default}: ${messsage}\n"
+    printf "%s\n${red}ERROR${default}: ${messsage}\n"
     exit 1
 }
 
