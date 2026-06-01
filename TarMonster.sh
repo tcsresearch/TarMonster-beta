@@ -10,6 +10,7 @@
 
 ## First, we will import our Master Config File ##
 # TODO: Add Sanity Check.
+# shellcheck source=/dev/null
 source ./conf/TarMonster.conf
 
 ## Second, we will import our additional config files.
