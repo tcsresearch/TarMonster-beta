@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034  # Unused variables left for readability
 
 # Reset
 Color_Off='\033[0m'       # Text Reset
