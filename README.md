@@ -20,6 +20,12 @@
 <h4> Testing has gone well so far, and can be considered somewhat suitable for testing, but still lacks most features. </h4>
 <hr>
 
+<p>
+  :white_check_mark: This code was verified as ShellCheck compliant as of 05/31/2026. <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Code added after this date may or may not remain in compliance.
+</p>
+<hr>
+
 <ins> <h3> Why Call It TarMonster? </h3> </ins> <br>
 TarMonster gets its name from both the Linux program tar and a Scooby-Doo villain.
 
