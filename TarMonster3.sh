@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# ShellCheck: Disable SC1090
+# shellcheck source=/dev/null
+# ShellCheck: Disable SC2034
+# shellcheck disable=SC2034  # Unused variables left for readability
+
 
 # echo "Enabling Cecho..."
 # FIXME: Add Cecho.bfunc
