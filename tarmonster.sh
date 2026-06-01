@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# ShellCheck: Disable SC1090
+# shellcheck source=/dev/null
+# ShellCheck: Disable SC2034
+# shellcheck disable=SC2034  # Unused variables left for readability
 
 ## tarmonster3.sh
 # This is the Cecho Enabled / File & Folder Restructured main script for TarMonster.
