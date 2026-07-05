@@ -1,0 +1,12 @@
+function Find_ExcludedFiles() {
+        find | grep -f excludes-filtered2.list | tee ExcludedFiles.list
+}
+
+function Remove_ExcludedFiles() {
+        xargs rm < ExcludedFiles.list
+}
+
+function ExcludesHandler() { # MultiFunction Call
+        Find_ExcludedFiles
+        Remove_ExcludedFiles
+}
