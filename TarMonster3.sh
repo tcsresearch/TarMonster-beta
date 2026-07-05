@@ -9,11 +9,13 @@
 # FIXME: Add Cecho.bfunc
 # source Cecho.bfunc
 
+# TODO: Add Sanity Checker...
 echo "Sourcing Files..."
-source BLING/Cecho.bfunc
-source bin/TarMonster.vars
-source bin/TarMonster.bfunc
+source BLING/Cecho.bfunc # ColorEcho
 cecho green "Cecho Enabled."
+source bin/TarMonster.vars # Variables
+source bin/TarMonster.bfunc # Functions
+# source functions/ExcludesLib.bfunc # New 07/05/2026
 
 DisplayBanner
 DisplayVars
