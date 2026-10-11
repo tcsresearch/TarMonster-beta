@@ -1,0 +1,45 @@
+name: Build SRPM
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows you to trigger the build manually
+
+jobs:
+  build-srpm:
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:latest # Use fedora or ://redhat.com
+
+    steps:
+      - name: Install build dependencies
+        run: |
+          dnf install -y rpm-build rpmdevtools git
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Prepare RPM build structure
+        run: |
+          rpmdev-setuptree
+          # Link your spec file into the RPM structure
+          ln -s "${{ github.workspace }}/your-package.spec" ~/rpmbuild/SPECS/
+
+      - name: Create source tarball
+        run: |
+          # Pack your source files. Match the Source0 name inside your .spec file.
+          # Example assumes packing the repo content into a versioned archive:
+          tar --exclude-vcs -czf ~/rpmbuild/SOURCES/your-package-1.0.0.tar.gz -C "${{ github.workspace }}" .
+
+      - name: Build Source RPM (SRPM)
+        run: |
+          rpmbuild -bs ~/rpmbuild/SPECS/your-package.spec
+
+      - name: Upload SRPM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-rpm
+          path: /root/rpmbuild/SRPMS/*.src.rpm
+          if-no-files-found: error
