@@ -1,0 +1,23 @@
+name: ShellCheck_njs24-With-bfunc
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -x -e 2148 -e SC2154 -e SC2034 -e SC1090
+        with: 
+          additional_files: "functions/*.bfunc"
+          ignore_paths:
+            _Old
