@@ -1,0 +1,26 @@
+name: ShellCheck .bfunc files
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+jobs:
+  shellcheck:
+    name: Run ShellCheck
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install ShellCheck
+      run: sudo apt-get install -y shellcheck
+
+    - name: Lint .bfunc files
+      run: |
+        # Find all .bfunc files and run shellcheck on them
+        # Using -print0 and xargs -0 handles file names with spaces safely
+        find . -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
