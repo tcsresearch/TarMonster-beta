@@ -33,7 +33,7 @@ function GetCurrentAppVersion_2() {
 }
 
 function GetCurrentAppVersion_3() {
-  php -r "echo 'Current App Version: '; "  && php $CRM_Folder/command.php version 
+  php -r "echo 'Current App Version: '; "  && php "$CRM_Folder"/command.php version 
   }
 
   ###########################################################################################
