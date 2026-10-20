@@ -6,7 +6,10 @@ detect_compression_type() {
     fi
 
     # Use the 'file' command to inspect the file's contents
-    local file_info=$(file -b --mime-type "$filename")
+    ## local file_info=$(file -b --mime-type "$filename") # Causes SC2155.
+    # Splitting to fix SC2155.
+    local file_info
+    file_info=$(file -b --mime-type "$filename")
 
     case "$file_info" in
         *application/gzip*)
