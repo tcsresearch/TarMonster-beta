@@ -35,17 +35,17 @@ function CechoTest() {
 }
 
 function LoadFuncVars() {
-	## Source Variables ##
-	source "bin/TarMonster.vars"
+	### Source Our Variables ###
+	source "conf/TarMonster.vars"
 
-	### Next, we import our functions ###
+	### Source Our functions ###
+	### source "bin/TarMonster.bfunc"
+	source "functions/TarMonster.bfunc"
 
-	# source ~/bin/TarMonster.bfunc
-	source "bin/TarMonster.bfunc"
 }
 
 
-##  Call Functions ###
+###  Call Functions ###
  # CechoTest
  #  LoadFuncVars
  # BLING_Loader1
