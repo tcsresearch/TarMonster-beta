@@ -1,3 +1,6 @@
+#!/bin/env bash
+
+
 # 'File exists.' if the file is present
 # 'File does not exist.' if the file is not present
 
