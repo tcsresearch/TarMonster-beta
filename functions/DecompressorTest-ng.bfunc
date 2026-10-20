@@ -1,0 +1,72 @@
+best_decompressor() {
+    local archive="$1"
+
+    # Validate archive input
+    if [[ -z "$archive" ]]; then
+        echo "Usage: best_decompressor <archive_file>"
+        return 1
+    fi
+
+    if [[ ! -f "$archive" ]]; then
+        echo "Error: Archive file '$archive' does not exist or is not a regular file."
+        return 1
+    fi
+
+    # Extract extension for format detection
+    case "$archive" in
+        *.tar.xz)
+            if ! command -v xz >/dev/null 2>&1; then echo "Error: xz is required but not installed."; return 1; fi
+            echo "Extracting tar.xz archive using xz..."
+            xz -dc "$archive" | tar -xf -
+            ;;
+        *.xz)
+            if ! command -v xz >/dev/null 2>&1; then echo "Error: xz is required but not installed."; return 1; fi
+            echo "Decompressing xz file..."
+            xz -d -k "$archive"
+            ;;
+        *.tar.zst)
+            if ! command -v zstd >/dev/null 2>&1; then echo "Error: zstd is required but not installed."; return 1; fi
+            echo "Extracting tar.zst archive using zstd..."
+            zstd -dc "$archive" | tar -xf -
+            ;;
+        *.zst)
+            if ! command -v zstd >/dev/null 2>&1; then echo "Error: zstd is required but not installed."; return 1; fi
+            echo "Decompressing zstd file..."
+            zstd -d "$archive"
+            ;;
+        *.tar.lz4)
+            if ! command -v lz4 >/dev/null 2>&1; then echo "Error: lz4 is required but not installed."; return 1; fi
+            echo "Extracting tar.lz4 archive using lz4..."
+            lz4 -dc "$archive" | tar -xf -
+            ;;
+        *.lz4)
+            if ! command -v lz4 >/dev/null 2>&1; then echo "Error: lz4 is required but not installed."; return 1; fi
+            echo "Decompressing lz4 file..."
+            lz4 -d "$archive"
+            ;;
+        *.tar.bz2)
+            if ! command -v bzip2 >/dev/null 2>&1; then echo "Error: bzip2 is required but not installed."; return 1; fi
+            echo "Extracting tar.bz2 archive using bzip2..."
+            bzip2 -dc "$archive" | tar -xf -
+            ;;
+        *.bz2)
+            if ! command -v bzip2 >/dev/null 2>&1; then echo "Error: bzip2 is required but not installed."; return 1; fi
+            echo "Decompressing bzip2 file..."
+            bzip2 -d -k "$archive"
+            ;;
+        *.tar.gz|*.tgz)
+            if ! command -v gzip >/dev/null 2>&1; then echo "Error: gzip is required but not installed."; return 1; fi
+            echo "Extracting tar.gz archive using gzip..."
+            gzip -dc "$archive" | tar -xf -
+            ;;
+        *.gz)
+            if ! command -v gzip >/dev/null 2>&1; then echo "Error: gzip is required but not installed."; return 1; fi
+            echo "Decompressing gzip file..."
+            gzip -d -k "$archive"
+            ;;
+        *)
+            echo "Error: Unsupported or unknown archive format for '$archive'."
+            return 1
+            ;;
+    esac
+}
