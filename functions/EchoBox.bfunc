@@ -1,3 +1,6 @@
+#!/bin/env bash
+
+
 # Taken From: https://unix.stackexchange.com/questions/70615/bash-script-echo-output-in-box
 #
 ### USAGE:  Call it with multiple parameters, like EchoBox 'first line' 'more line' 'even more line'.
