@@ -57,7 +57,7 @@ function CreateFolder() {
 	# CurrentYear # TESTING !!
 	if [ ! -d "$CurrentYear" ]; then
 	  echo "Current Year Folder $CurrentYear does not exist.  Creating..." 
-	# mkdir -p $CurrentYear
+	# mkdir -p "$CurrentYear"
 	fi
 
 
@@ -69,7 +69,7 @@ function CreateFolder() {
 
 function CreateBackupFolder() { # Not in use yet!
 	  echo "Creating Backup Folder $BackupFolder..."
-	  mkdir -p $BackupFolder
+	  mkdir -p "$BackupFolder"
 	  echo "Created Backup Folder $BackupFolder Successfully."
 	  echo " "
 }
@@ -93,7 +93,8 @@ function DoBackup() {  # WORKS!
 	# tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
 	echo "Creating Backup..."
 	## tar -cvf $BackupFileName.tar $AppFolder
-	$BackupCMD $BackupFileName.tar $AppFolder
+	### $BackupCMD $BackupFileName.tar $AppFolder
+	$BackupCMD "$BackupFileName".tar "$AppFolder"	
 	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
 	# bzip2 -vv crm.tcshosting.net.tar
 	# bzip2 -vv $BackupFileName-$Today
@@ -105,7 +106,7 @@ function DoBackup() {  # WORKS!
 function CompressBackup() {  # WORKS!
 	echo "Compressing Backup File $BackupFileName.tar..."
 	# bzip2 -vv $BackupFileName.tar
-	$CompressCMD $BackupFileName.tar
+	$CompressCMD "$BackupFileName".tar
 	echo "Backup Compressed Successfully."
 	echo " "
 }
@@ -113,7 +114,7 @@ function CompressBackup() {  # WORKS!
 
 function MoveBackup() {  # WORKS!
 	echo "Moving Backup File $BackupFileName.tar to Backup Folder $BackupFolder..."
-	mv -v $BackupFileName.tar.bz2 $BackupFolder
+	mv -v $BackupFileName.tar.bz2 "$BackupFolder"
 	echo " Moved Backup File Successfully."
 	echo " "
 }
