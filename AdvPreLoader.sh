@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # shellcheck source=/dev/null
-# shellcheck disable=SC2154
+# shellcheck disable=SC2034,SC2154
 
 # BLING PreLoader Utility
 PreLoader_Version="26.10.1"
