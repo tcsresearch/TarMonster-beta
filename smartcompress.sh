@@ -6,6 +6,8 @@
 #              and directories based on explicit speed or size criteria.
 # ==============================================================================
 
+# TODO: Add support for pigz (Parallel GZip) and pixz (Parallel XZ).
+
 set -euo pipefail
 
 show_help() {
