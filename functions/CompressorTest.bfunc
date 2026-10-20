@@ -1,3 +1,6 @@
+#!/bin/env bash
+
+
 best_compressor() {
     local target="$1"
     if [ -z "$target" ]; then
