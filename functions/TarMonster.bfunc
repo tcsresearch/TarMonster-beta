@@ -79,14 +79,14 @@ function SanityChecker() {
 	if [ ! -d "$AppFolder" ]; then
 	  echo "App Folder $AppFolder does not exist."
 	  echo "Exiting..."
-	  exit 1
+	  return 1
 	fi
 
 	# BackupFolder
 	if [ ! -d "$BackupFolder" ]; then
   	  echo "Backup Folder $BackupFolder does not exist."
 	  echo "Exiting..."
-	  exit 2
+	  return 2
 	fi
 
 	# For Future Use
@@ -109,15 +109,29 @@ function DoBackup() {
 	### $BackupCMD $BackupFileName.tar $AppFolder # Disabled for line below Oct 20, 2026
 	$BackupCMD "$BackupFileName".tar "$AppFolder"
 	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
-	# bzip2 -vv crm.tcshosting.net.tar
-	# bzip2 -vv $BackupFileName-$Today
-	# $CompressCMD $BackupFolder/$BackupFileName
 	echo "Backup Created Successfully."
 }
+
+function DoBackup2() {  
+	## TODO: Remove $Today from commands; already in EspoCRM.vars
+	# tar -cvf crm.tcshosting.net.tar crm.tcshosting.net
+	# tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
+	echo "Creating Backup in $BackupFolder/$CurrentYear..."
+	## tar -cvf $BackupFileName.tar $AppFolder
+	### $BackupCMD $BackupFileName.tar $AppFolder # Disabled for line below Oct 20, 2026
+	##### $BackupCMD "$BackupFileName".tar "$AppFolder" ### Superceded Oct 2026.
+	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
+	  $BackupCMD $BackupFolder/$CurrentYear/$BackupFileName-$Today.tar $AppFolder
+	echo "Backup Created Successfully."
+}
+
 
 function CompressBackup() {  
 	echo "Compressing Backup File $BackupFileName.tar..."
 	# bzip2 -vv $BackupFileName.tar
+	# bzip2 -vv crm.tcshosting.net.tar
+	# bzip2 -vv $BackupFileName-$Today
+	# $CompressCMD $BackupFolder/$BackupFileName
 	### $CompressCMD $BackupFileName.tar # Disabled for line below Oct 20, 2026
 	$CompressCMD "$BackupFileName".tar
 	echo "Backup Compressed Successfully."
