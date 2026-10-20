@@ -3,7 +3,7 @@
 
 function GetCurrentAppVersion_1() {
   cd crm.tcshosting.net || return 1
-  echo "Current EspoCRM Vesrion Is:"
+  echo "Current EspoCRM Version Is:"
   php command.php version
   echo " "
   php command.php version > VERSION
@@ -13,7 +13,7 @@ function GetCurrentAppVersion_1() {
 
 function GetCurrentAppVersion_2() {
   cd crm.tcshosting.net || return 1
-  php -r "echo 'Current EspoCRM Vesrion Is:' "  && php command.php version
+  php -r "echo 'Current EspoCRM Version Is:' "  && php command.php version
   echo " "
   php command.php version > VERSION
   echo "Saved Current EspoCRM Version to crm.tcshosting.net/VERSION"
@@ -29,8 +29,8 @@ function GetCurrentAppVersion_3() {
   ###########################################################################################
 
   echo "To use this script, source it, then run one of the following:"
-  echo "   GetCurrentAppVersion_1"
-  echo "   GetCurrentAppVersion_2"
-  echo "   GetCurrentAppVersion_3"
+  echo "   GetCurrentAppVersion_1 - Gets version (BASH echo) and writes to file (two-lines)."
+  echo "   GetCurrentAppVersion_2 - Gets version (PHP echo) and writes to file (single line)."
+  echo "   GetCurrentAppVersion_3 - Gets version (PHP echo) without writing to file (single line). "
   echo " "
   
