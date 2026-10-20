@@ -5,7 +5,7 @@
 
 filename='/path/to/file'
 
-if [ -f $filename ]; then
+if [ -f "$filename" ]; then
     echo 'The file exists.'
 else
     echo 'The file does not exist.'
@@ -20,8 +20,9 @@ fi
 #
 filenames=('/path/to/file1' '/path/to/file2' '/path/to/file3')
 
-for filename in ${filenames[@]}; do
-    if [ -f $filename ]; then
+## for filename in ${filenames[@]}; do
+for filename in "${filenames[@]}"; do
+    if [ -f "$filename" ]; then
         echo "$filename exists."
     else
         echo "$filename does not exist."
