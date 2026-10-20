@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/env bash
 
 ## This is the latest and greatest version of Cecho, as of November 2024. ##
 #
