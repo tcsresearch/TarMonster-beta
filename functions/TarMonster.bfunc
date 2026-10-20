@@ -3,27 +3,37 @@
 
 # shellcheck disable=SC2154
 
+#############################################################################
+# DISPLAY FUNCTIONS #                                                       #
+#############################################################################
+
 ### Now we declare our functions ###
 # TODO: Integrate BLING/Cecho.  - In Progress
 
-function DisplayBanner() {
-	echo "$ProgName $ProgVersion - A wrapper for tar/Bzip/Gzip."
-	echo "(c) 2022-2023 TCS Research.  All Rights Reserved."
+function NewLine() {
+	echo " "
 }
 
-### Cecho
+### --- DisplayBanner: w/o Cecho --- ###
+function DisplayBanner() {
+	echo "$ProgName $ProgVersion - A wrapper for tar/Bzip/Gzip."
+	echo "(c) 2022-2026 TCS Research.  All Rights Reserved."
+}
+
+### --- DisplayBanner: with Cecho --- ###
 function DisplayBanner2() {
 ### Banner ###
 echo " "
 
 ## $Cecho "${Red} $ProgName $ProgVersion - An efficient wrapper for tar/Bzip/Gzip.${Color_Off}"
 $Cecho "${Yellow} $ProgName $ProgVersion ${Red} - An efficient wrapper script for tar/Bzip/Gzip. ${Color_Off}"
-$Cecho "      ${Red}                (c) 2022-2023 TCS Research. All Rights Reserved. ${Color_Off} "
+$Cecho "      ${Red}                (c) 2022-2026 TCS Research. All Rights Reserved. ${Color_Off} "
 
 echo " "
 }
 
 
+### --- DisplayVars: w/o Cecho --- ###
 function DisplayVars() {  # Tabbed for use with: | column -t -s $'\t'
 	echo "Today Is:			$Today"
 	Newline
@@ -42,12 +52,8 @@ function DisplayVars() {  # Tabbed for use with: | column -t -s $'\t'
 	NewLine
 }
 
-function NewLine() {
-	echo " "
-}
 
-
-### Cecho.
+### --- DisplayVars: with Cecho --- ###
 function DisplayVars2() {
 	$Cecho "${Red} Today Is: ${Yellow} $Today. ${Color_Off}"
 	$Cecho "${Red} App Name: ${Yellow} $AppName. ${Color_Off}"
@@ -63,8 +69,9 @@ function DisplayVars2() {
 	$Cecho "${Red} Compress Command: ${Yellow} $CompressCMD ${Color_Off}"
 }
 
-
-
+#############################################################################
+# SANITY CHECKER #                                                          #
+#############################################################################
 
 function SanityChecker() { 
 
@@ -89,6 +96,9 @@ function SanityChecker() {
 }
 
 
+#############################################################################
+# BACKUP FUNCTIONS #                                                        #
+#############################################################################
 
 function DoBackup() {  
 	## TODO: Remove $Today from commands; already in EspoCRM.vars
@@ -118,6 +128,18 @@ function MoveBackup() {
 	### mv -v $BackupFileName.tar.bz2 $BackupFolder # Disabled for line below Oct 20, 2026
 	mv -v "$BackupFileName".tar.bz2 "$BackupFolder"
 }
+
+
+function Perform-MasterBackup() { # Alias Function
+	DoBackup
+	CompressBackup
+	MoveBackup
+}
+
+
+#############################################################################
+# UPGRADE FUNCTION #                                                        #
+#############################################################################
 
 function DoUpgrade() { # For EspoCRM Only!
 	echo "Performing Upgrade..."
