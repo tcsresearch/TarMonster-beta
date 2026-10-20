@@ -1,6 +1,8 @@
 ## TarMonster.bfunc
 # This is the functions library for TarMonster.
 
+# shellcheck disable=SC2154
+
 ### Now we declare our functions ###
 # TODO: Integrate BLING/Cecho.  - In Progress
 
