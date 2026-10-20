@@ -2,6 +2,8 @@
 ## Cecho (Formerly NewCecho) with added colors and misc. fixes.
 # Last Updated: July 22, 2026
 
+# shellcheck disable=SC2034
+
 Cecho_Version="26.07.1"
 
 # TODO: Determine regular vs bold, e.g: 0;31 vs 1;31
@@ -12,7 +14,7 @@ Cecho_Version="26.07.1"
 cecho() {
         local code="\033["
         case "$1" in
-            black  		|  b) color="${code}0;30m";;
+            black  		|  blk) color="${code}0;30m";;
             red    		|  r) color="${code}0;31m";; 
 			lightred	|  lr) color="${code}1;31m";; 
             green  		|  g) color="${code}0;32m";; 
