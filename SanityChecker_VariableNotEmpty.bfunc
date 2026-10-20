@@ -1,0 +1,11 @@
+# Check if variables are specified and not empty
+VarChecker() {
+    local exit_code=0
+    for var_name in "$@"; do
+        if [ -z "${!var_name}" ]; then
+            echo "Error: Variable '$var_name' is empty or not set." >&2
+            exit_code=1
+        fi
+    done
+    return $exit_code
+}
