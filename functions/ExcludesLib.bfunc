@@ -1,3 +1,6 @@
+#!/bin/env bash
+
+
 function Find_ExcludedFiles() {
         ## find | grep -f "$(pwd)"/excludes-filtered2.list | tee ExcludedFiles.list
         find . -type f | grep -f "$(pwd)/excludes-filtered2.list" | tee ExcludedFiles.list
