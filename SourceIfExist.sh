@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+# shellcheck source=/dev/null
+
 # Ensure a file argument was provided
 if [ -z "$1" ]; then
     echo "ERROR: No file specified. Usage: $0 <filename>"
