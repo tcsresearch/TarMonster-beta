@@ -26,16 +26,22 @@ function DisplayVars() {  # Tabbed for use with: | column -t -s $'\t'
 	echo " "
 }
 
-# TODO: Split into multiple functions / Rename as SanityChcker_AppFolder, SanityChecker_BackupFolder, and SanityChecker_CurrentYear (new).
-function SanityChecker() { # WORKS!
+# TESTING: Split into multiple functions / Rename as SanityChcker_AppFolder, SanityChecker_BackupFolder, and SanityChecker_CurrentYear (new).
+function SanityChecker() { # Alias of new function split Oct 2026.
+	SanityChecker_AppFolder
+	SanityChecker_BackupFolder
+}	
 
+function SanityChecker_AppFolder() {
 	# AppFolder
 	if [ ! -d "$AppFolder" ]; then
 	  echo "App Folder $AppFolder does not exist."
 	  echo "Exiting..."
 	  exit 1
 	fi
+}
 
+function SanityChecker_BackupFolder() {
 	# BackupFolder
 	if [ ! -d "$BackupFolder" ]; then
   	  echo "Backup Folder $BackupFolder does not exist."
@@ -43,12 +49,14 @@ function SanityChecker() { # WORKS!
 	  exit 2            # Can I call a function within a function?
 			    # Perhaps I should just add the CreateBackupFolder function code here instead.
 	fi
+}
 
+function CreateFolder() {
 	# CurrentYear # TESTING !!
 	if [ ! -d "$CurrentYear" ]; then
 	  echo "Current Year Folder $CurrentYear does not exist.  Creating..." 
 	# mkdir -p $CurrentYear
-	
+
 
 
 	# For Future Use
