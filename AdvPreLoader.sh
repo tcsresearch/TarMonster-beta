@@ -106,9 +106,9 @@ SanityChecker_NoColor() {
 
 function SanityChecker() {
 # Alias function for pointing to either SanityChecker_WithColor or SanityChecker_NoColor, depending on whether or not $COLORS_FILE is loaded.
-	[[ "$COLORS_FILE_LOADED" == "TRUE" ]] && SanityChecker_WithColor
+	[[ "$COLORS_FILE_LOADED" == "TRUE" ]] && SanityChecker_WithColor "$@"
 
-	[[ "$COLORS_FILE_LOADED" == "FALSE" ]] && SanityChecker_NoColor
+	[[ "$COLORS_FILE_LOADED" == "FALSE" ]] && SanityChecker_NoColor "$@"
 }
 	
 ####################################################################################################################################
