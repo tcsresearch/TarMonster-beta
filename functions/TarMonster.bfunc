@@ -96,7 +96,8 @@ function DoBackup() {
 	# tar -cvf $BackupFolder/$BackupFileName-$Today $AppFolder
 	echo "Creating Backup..."
 	## tar -cvf $BackupFileName.tar $AppFolder
-	$BackupCMD $BackupFileName.tar $AppFolder
+	### $BackupCMD $BackupFileName.tar $AppFolder # Disabled for line below Oct 20, 2026
+	$BackupCMD "$BackupFileName".tar "$AppFolder"
 	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
 	# bzip2 -vv crm.tcshosting.net.tar
 	# bzip2 -vv $BackupFileName-$Today
