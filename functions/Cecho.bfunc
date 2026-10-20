@@ -1,0 +1,58 @@
+#/bin/bash
+## Cecho (Formerly NewCecho) with added colors and misc. fixes.
+# Last Updated: July 22, 2026
+
+Cecho_Version="26.07"
+
+# TODO: Determine regular vs bold, e.g: 0;31 vs 1;31
+#	Add Underline/Background/High_Intensity/Bold_High_Intensity/High_Intensity_Backgrounds
+# 	Portions Taken From: https://gkarthiks.github.io/quick-commands-cheat-sheet/bash_command.html
+#	Additional Portions Added From: https://github.com/gkarthiks/quick-commands-cheat-sheet/blob/main/bash_command.md
+
+cecho() {
+        local code="\033["
+        case "$1" in
+            black  		|  b) color="${code}0;30m";;
+            red    		|  r) color="${code}0;31m";; 
+			lightred	|  lr) color="${code}1;31m";; 
+            green  		|  g) color="${code}0;32m";; 
+			lightgreen	|  lg) color="${code}1;32m";;
+			brownorange |  bo) color="${code}0;33m";; 
+            yellow 		|  y) color="${code}1;33m";; 	# was: 0;33m
+            blue   		|  b) color="${code}0;34m";;
+			lightblue	|  lb) color="${code}1;34m";;
+            purple 		|  p) color="${code}0;35m";; 
+			lightpurple	|  lp) color="${code}1;35m";;
+			cyan		|  c) color="${code}0;36m";;
+            lightcyan	|  lc) color="${code}1;36m";;
+			white  		|  w) color="${code}1;37m";; 	# is this color white or gray?
+            lightgray   | gr) color="${code}0;37m";; 	# same as white - for now.
+            lightgrey   | lgr) color="${code}0;37m";; 	# alias of gray.
+			darkgray   	| dgr) color="${code}1;30m";; 	# same as white - for now.
+            darkgrey   	| dgr) color="${code}1;30m";; 	# alias of gray.
+                
+	#### Default case.
+             #   *) local text="$1"
+             *) local text="Usage: cecho <color> <text> - text must be inside double quotes."
+        esac
+        [ -z "$text" ] && local text="$color$2${code}0m"
+        echo -e "$text"
+}
+
+### Test Display - WORKS!! ###
+function DisplayTest() {
+	cecho b "This is blue"
+	cecho r "This is red"
+	cecho yellow "This is yellow"
+	cecho white "This is white"
+	cecho lightgray "This is lightgray"
+	cecho darkgray "This is darkgray"
+}
+
+### Usage ###
+function Usage() {
+	echo "cecho <color> <text>"
+	echo "Where <color> is one of black/red/lightred/green/lightgreen/brownorange/yellow"
+	echo "       blue/lightblue/purple/lightpurple/cyan/lightcyan/white/lightgray/darkgray"
+	echo "       and <text> is what you want to be echoed."
+}
