@@ -77,7 +77,7 @@ function CreateBackupFolder() { # Not in use yet!
 
 
 function Pause(){
-   read -p "$*"
+   read -rp "$*"
 }
 
 # ...
@@ -114,7 +114,8 @@ function CompressBackup() {  # WORKS!
 
 function MoveBackup() {  # WORKS!
 	echo "Moving Backup File $BackupFileName.tar to Backup Folder $BackupFolder..."
-	mv -v $BackupFileName.tar.bz2 "$BackupFolder"
+	### mv -v $BackupFileName.tar.bz2 "$BackupFolder"
+	mv -v "$BackupFileName".tar.bz2 "$BackupFolder"
 	echo " Moved Backup File Successfully."
 	echo " "
 }
