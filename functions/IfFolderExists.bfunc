@@ -5,7 +5,7 @@
 
 foldername='/path/to/folder'
 
-if [ -d $foldername ]; then
+if [ -d "$foldername" ]; then
     echo 'The folder exists.'
 else
     echo 'The folder does not exist.'
@@ -20,8 +20,8 @@ fi
 #
 foldernames=('/path/to/folder1' '/path/to/folder2' '/path/to/folder3')
 
-for foldername in ${foldernames[@]}; do
-    if [ -d $foldername ]; then
+for foldername in "${foldernames[@]}"; do
+    if [ -d "$foldername" ]; then
         echo "$foldername exists."
     else
         echo "$foldername does not exist."
