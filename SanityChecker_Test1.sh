@@ -4,6 +4,7 @@
 # Function to source files in a given directory with a specific extension
 
 # shellcheck disable=SC2034
+# shellcheck source=/dev/null
 
 #####################################################################################################################################
 # TODO #																															#
