@@ -35,6 +35,17 @@ For now, the primary focus is to create backups and compress them.  Restoring ba
 
 <hr>
 
+## Update Oct 20, 2026 - 0.5.2.7 - UNTESTED!
+- Moved obsolete/duplicate files to _Old.
+- Improved ShellCheck compliance.
+- Added CompressorTest.bfunc and CompressorTest2.bfunc (find & select the best compression method [DEPRICATION PENDING]. )
+- Added CompressorTest-ng.bfunc and DecompressorTest-ng.bfunc (find & select the best compression method [LATEST AND GREATEST]. )
+- Added GetCurrentAppVersion-ng.sh <br> &nbsp;&nbsp;&nbsp; (merge GetCurrentAppVersion.sh, GetCurrentAppVersion2.sh, and GetCurrentAppVersion3.sh into a single file.)
+- Migrated to standardized SplitConfig layout (once testing is completed, we can remove the bin/folder.)
+- Implemented several code fixes throughout, incl. typo fixes.
+
+<hr>
+
 ## Update Jul 5, 2026 - 0.5.2.6 - UNTESTED!
 - Added ExcludesLib.bfunc (seems to work well removing excluded packages; further testing required!)
 
