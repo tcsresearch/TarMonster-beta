@@ -56,7 +56,7 @@ function CreateFolder() {
 	if [ ! -d "$CurrentYear" ]; then
 	  echo "Current Year Folder $CurrentYear does not exist.  Creating..." 
 	# mkdir -p $CurrentYear
-
+	fi
 
 
 	# For Future Use
