@@ -108,13 +108,15 @@ function DoBackup() {
 function CompressBackup() {  
 	echo "Compressing Backup File $BackupFileName.tar..."
 	# bzip2 -vv $BackupFileName.tar
-	$CompressCMD $BackupFileName.tar
+	### $CompressCMD $BackupFileName.tar # Disabled for line below Oct 20, 2026
+	$CompressCMD "$BackupFileName".tar
 	echo "Backup Compressed Successfully."
 }
 
 function MoveBackup() {  
 	echo "Moving Backup File $BackupFileName.tar to Backup Folder $BackupFolder..."
-	mv -v $BackupFileName.tar.bz2 $BackupFolder
+	### mv -v $BackupFileName.tar.bz2 $BackupFolder # Disabled for line below Oct 20, 2026
+	mv -v "$BackupFileName".tar.bz2 "$BackupFolder"
 }
 
 function DoUpgrade() { # For EspoCRM Only!
