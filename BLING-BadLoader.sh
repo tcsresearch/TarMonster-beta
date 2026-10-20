@@ -6,13 +6,18 @@
 
 # TODO: Fixed a critical error...will this work now?
 
-BLING_Libs_Folder="./BLING"
+# Oct 20, 2026 - Fixed a bug in BadLoader function...will it work?
+#	[function]: Renamed BadLoader as FixedLoader
+#	[function]: Renamed Loader as TempLoader
+# 	Modified script to run FixedLoader instead of TempLoader
+
+BLING_Libs_Folder="$(pwd)/BLING"
 
 echo "BLING Loader"
 echo "Library Folder: $BLING_Libs_Folder"
 echo " "
 
-function BadLoader() {
+function FixedLoader() {
 if [ -d "$BLING_Libs_Folder" ]; then
 	echo "Library Folder Exists [OK]"
 	cd "$BLING_Libs_Folder" || return
@@ -32,8 +37,8 @@ else
 fi
 }
 
-function Loader() {
-	if [ -d "BLING_Libs_Folder" ]; then
+function TempLoader() {
+	if [ -d "$BLING_Libs_Folder" ]; then
 		echo "Library Folder Exists: [OK]"
 		cd "$BLING_Libs_Folder" || return
 		# cecho blue "Processing BLING Library File: "
@@ -45,12 +50,12 @@ function Loader() {
 		echo "BLING Libraries Loaded Successfully."
 		cd ... || return # use instead of 'cd -' (per shellcheck)
 	else
-		# cecho red "ERROR: Folder does not exists: $BLING_Libs_Folder"
+		# cecho red "ERROR: Folder does not exist: $BLING_Libs_Folder"
 		echo "ERROR: Folder does not exist: $BLING_Libs_Folder"
 	fi
 }
 
 ### Main Progream ###
 
-# BadLoader
-Loader
+ FixedLoader
+# TempLoader
