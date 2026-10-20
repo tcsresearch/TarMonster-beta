@@ -3,6 +3,8 @@
 # SanityChecker.bfunc - Source If Exists Function 	(SanityChecker) #			
 # Function to source files in a given directory with a specific extension
 
+# shellcheck disable=SC2034
+
 #####################################################################################################################################
 # TODO #																															#
 #####################################################################################################################################
