@@ -19,7 +19,7 @@ jobs:
           dnf install -y rpm-build rpmdevtools git
 
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Prepare RPM build structure
         run: |
