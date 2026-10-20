@@ -15,7 +15,7 @@ function banner() {
     echo -ne "$1"
     echo "-${b//?/-}-"
     for l in "${s[@]}"; do
-        printf '         %s%*s%s         \n' "$(echo -ne $second_color)" "-$w" "$l" "$(echo -ne $1)"
+        printf '         %s%*s%s         \n' "$(echo -ne "$second_color")" "-$w" "$l" "$(echo -ne "$1")"
     done
     echo -e "-${b//?/-}-${NC}"
 }
