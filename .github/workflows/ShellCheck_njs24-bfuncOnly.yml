@@ -23,4 +23,6 @@ jobs:
       run: |
         # Find all .bfunc files and run shellcheck on them
         # Using -print0 and xargs -0 handles file names with spaces safely
-        find . -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
+        ## find . -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
+        find . -path "*/_Old" -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
+
