@@ -1,27 +1,39 @@
 #!/usr/bin/env bash
 #GetCurrentAppVersion-ng.sh - Consolidate GetCurrentAppVersion.sh, GetCurrentAppVersion2.sh, and GetCurrentAppVersion3.sh into a single script.
 
+### --- Define Variables --- ###
+CRM_Folder="$(pwd)/crm.tcshosting.net"
+CRM_VersionFile="EspoCRM_VERSION"
+
+### --- Display Banner --- ###
+function DisplayBanner() {
+  echo "CRM Folder: $CRM_Folder"
+  echo "CRM Version File: $CRM_VersionFile"
+  echo " "
+}
+  
+### --- Define Functions --- ###
 function GetCurrentAppVersion_1() {
-  cd crm.tcshosting.net || return 1
+  cd $CRM_Folder || return 1
   echo "Current EspoCRM Version Is:"
   php command.php version
   echo " "
   php command.php version > VERSION
-  echo "Saved Current EspoCRM Version to crm.tcshosting.net/VERSION"
+  echo "Saved Current EspoCRM Version to $CRM_Folder/$CRM_VersionFile"
   cd ... || return # use instead of 'cd -' (per shellcheck)
 }
 
 function GetCurrentAppVersion_2() {
-  cd crm.tcshosting.net || return 1
+  cd $CRM_Folder || return 1
   php -r "echo 'Current EspoCRM Version Is:' "  && php command.php version
   echo " "
   php command.php version > VERSION
-  echo "Saved Current EspoCRM Version to crm.tcshosting.net/VERSION"
+  echo "Saved Current EspoCRM Version to $CRM_Folder/$CRM_VersionFile"
   cd ... || return # use instead of 'cd -' (per shellcheck)
 }
 
 function GetCurrentAppVersion_3() {
-  php -r "echo 'Current App Version: '; "  && php crm.tcshosting.net/command.php version 
+  php -r "echo 'Current App Version: '; "  && php $CRM_Folder/command.php version 
   }
 
   ###########################################################################################
