@@ -1,0 +1,108 @@
+#!/bin/env bash
+
+best_compressor() {
+    local mode="balanced"
+    local target=""
+
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -s|--size)
+                mode="size"
+                shift
+                ;;
+            -f|--fast|--speed)
+                mode="speed"
+                shift
+                ;;
+            *)
+                target="$1"
+                shift
+                ;;
+        esac # FIXED: Changed from 'case' to 'esac'
+    done
+
+    if [[ -z "$target" ]]; then
+        echo "Usage: best_compressor [-s|--size | -f|--fast] <file_or_directory>"
+        return 1
+    fi
+
+    if [[ ! -e "$target" ]]; then
+        echo "Error: Target '$target' does not exist."
+        return 1
+    fi
+
+    # Handle directory compression via tar if necessary
+    local clean_up_tar=false
+    if [[ -d "$target" ]]; then
+        if ! command -v tar >/dev/null 2>&1; then
+            echo "Error: '$target' is a directory, but 'tar' is not installed."
+            return 1
+        fi
+        echo "Archiving directory '$target' to a temporary tarball..."
+        tar -cf "${target}.tar" "$target"
+        target="${target}.tar"
+        clean_up_tar=true
+    fi
+
+    case "$mode" in
+        "size")
+            if command -v xz >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using xz (-9)..."
+                xz -9 -k "$target"
+            elif command -v zstd >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using zstd (--ultra -22)..."
+                zstd --ultra -22 "$target"
+            elif command -v bzip2 >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using bzip2 (-9)..."
+                bzip2 -9 -k "$target"
+            elif command -v gzip >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using gzip (-9)..."
+                gzip -9 -k "$target"
+            else
+                echo "Error: No compression utilities found."
+                return 1
+            fi
+            ;;
+
+        "speed")
+            if command -v lz4 >/dev/null 2>&1; then
+                echo "Optimizing for SPEED: Using lz4..."
+                lz4 "$target" "${target}.lz4"
+            elif command -v zstd >/dev/null 2>&1; then
+                echo "Optimizing for SPEED: Using zstd (-1)..."
+                zstd -1 "$target"
+            elif command -v gzip >/dev/null 2>&1; then
+                echo "Optimizing for SPEED: Using gzip (-1)..."
+                gzip -1 -k "$target"
+            else
+                echo "Error: No speed-optimized compression utilities found."
+                return 1
+            fi
+            ;;
+
+        "balanced")
+            if command -v zstd >/dev/null 2>&1; then
+                echo "Using balanced zstd (-3)..."
+                zstd -3 "$target"
+            elif command -v lz4 >/dev/null 2>&1; then
+                echo "Using balanced lz4..."
+                lz4 "$target" "${target}.lz4"
+            elif command -v xz >/dev/null 2>&1; then
+                echo "Using balanced xz (-6)..."
+                xz -6 -k "$target"
+            elif command -v gzip >/dev/null 2>&1; then
+                echo "Using balanced gzip..."
+                gzip -k "$target"
+            else
+                echo "Error: No compression utilities found."
+                return 1
+            fi
+            ;;
+    esac
+
+    # Remove the uncompressed temporary tar file if we created one
+    if [ "$clean_up_tar" = true ]; then
+        rm "$target"
+    fi
+}
