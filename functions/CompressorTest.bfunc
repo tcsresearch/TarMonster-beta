@@ -1,0 +1,28 @@
+best_compressor() {
+    local target="$1"
+    if [ -z "$target" ]; then
+        echo "Usage: best_compressor <file_or_directory>"
+        return 1
+    fi
+
+    # Priority order: zstd (best balance/speed), lz4 (fastest), xz (max ratio), bzip2, gzip
+    if command -v zstd >/dev/null 2>&1; then
+        echo "Using zstd (Zstandard)..."
+        zstd -19 "$target"
+    elif command -v lz4 >/dev/null 2>&1; then
+        echo "Using lz4 (Ultra-fast)..."
+        lz4 "$target" "${target}.lz4"
+    elif command -v xz >/dev/null 2>&1; then
+        echo "Using xz (Maximum compression ratio)..."
+        xz -e "$target"
+    elif command -v bzip2 >/dev/null 2>&1; then
+        echo "Using bzip2..."
+        bzip2 -k "$target"
+    elif command -v gzip >/dev/null 2>&1; then
+        echo "Using gzip (Universal default)..."
+        gzip -k "$target"
+    else
+        echo "Error: No supported compression utilities found."
+        return 1
+    fi
+}
