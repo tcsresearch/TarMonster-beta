@@ -45,6 +45,10 @@ function LoadFuncVars() {
 }
 
 
+#############################################################################
+# Main Program #                                                            #
+#############################################################################
+
 ###  Call Functions ###
  # CechoTest
  #  LoadFuncVars
@@ -54,8 +58,10 @@ function LoadFuncVars() {
  DisplayVars | column -t -s $'\t' # Pipes to colum for properly aligned tabbed output
  Pause This script will backup the selected application and perform any available upgrades.  Press Any Key To Continue...
  SanityChecker
+ 
  DoBackup
  CompressBackup
  MoveBackup
+ 
  DoUpgrade
 
