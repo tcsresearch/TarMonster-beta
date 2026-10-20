@@ -1,3 +1,5 @@
+#!/bin/env bash
+
 # Taken From: https://unix.stackexchange.com/questions/70615/bash-script-echo-output-in-box
 # USAGE: Multi line banners are generated like `banner ${COLOR} ${OPTIONAL_SECONDCOLOR} "first line" "second line" "third line"`
 #
