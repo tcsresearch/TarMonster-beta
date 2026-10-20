@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+# TODO: Add support for pigz (Parallel GZip) and pixz (Parallel XZ).
 
 best_compressor() {
     local mode="balanced"
