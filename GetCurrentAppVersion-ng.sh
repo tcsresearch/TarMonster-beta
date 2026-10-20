@@ -14,20 +14,20 @@ function DisplayBanner() {
   
 ### --- Define Functions --- ###
 function GetCurrentAppVersion_1() {
-  cd $CRM_Folder || return 1
+  cd "$CRM_Folder" || return 1
   echo "Current EspoCRM Version Is:"
   php command.php version
   echo " "
-  php command.php version > VERSION
+  php command.php version > "$CRM_VersionFile"
   echo "Saved Current EspoCRM Version to $CRM_Folder/$CRM_VersionFile"
   cd ... || return # use instead of 'cd -' (per shellcheck)
 }
 
 function GetCurrentAppVersion_2() {
-  cd $CRM_Folder || return 1
+  cd "$CRM_Folder" || return 1
   php -r "echo 'Current EspoCRM Version Is:' "  && php command.php version
   echo " "
-  php command.php version > VERSION
+  php command.php version > "$CRM_VersionFile"
   echo "Saved Current EspoCRM Version to $CRM_Folder/$CRM_VersionFile"
   cd ... || return # use instead of 'cd -' (per shellcheck)
 }
