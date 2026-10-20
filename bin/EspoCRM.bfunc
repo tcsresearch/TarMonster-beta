@@ -1,6 +1,8 @@
 ## Upgrade-crm.sh
 # This is the functions library for backups and upgrades to ESPOCRM
 
+# shellcheck disable=SC2154
+
 ### Now we declare our functions ###
 # TODO: Integrate BLING/Cecho.
 # FIXME: [DoUpgrade Function] New Year? No Sanity Check exists to prevent backup file from being renamed to current year if folder does not exist.
