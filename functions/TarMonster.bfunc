@@ -121,8 +121,8 @@ function MoveBackup() {
 
 function DoUpgrade() { # For EspoCRM Only!
 	echo "Performing Upgrade..."
-	cd crm.tcshosting.net
+	cd crm.tcshosting.net || return
 	php command.php upgrade
-	cd -
+	cd - || return
 }
 
