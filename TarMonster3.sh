@@ -5,18 +5,17 @@
 # shellcheck disable=SC2034  # Unused variables left for readability
 
 
-# echo "Enabling Cecho..."
-# FIXME: Add Cecho.bfunc
-# source Cecho.bfunc
-
 # TODO: Add Sanity Checker...
 echo "Sourcing Files..."
-source BLING/Cecho.bfunc # ColorEcho
+source "$(pwd)"/BLING/Cecho.bfunc # ColorEcho
 cecho green "Cecho Enabled."
-source bin/TarMonster.vars # Variables
-source bin/TarMonster.bfunc # Functions
+source "$(pwd)"/conf/TarMonster.vars # Variables
+source "$(pwd)"/functions/TarMonster.bfunc # Functions
 # source functions/ExcludesLib.bfunc # New 07/05/2026
 
+#############################################################################
+# Main Program #                                                            #
+#############################################################################
 DisplayBanner
 DisplayVars
 
@@ -31,5 +30,4 @@ SanityChecker
 
 
 # Perform-MasterBackup
-
 DoUpgrade
