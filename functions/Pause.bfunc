@@ -1,2 +1,2 @@
 # This will pause until a button is pressed.
-read -p "Press [Enter] to continue..."
+read -rp "Press [Enter] to continue..."
