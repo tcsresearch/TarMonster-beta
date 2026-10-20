@@ -122,11 +122,11 @@ function MoveBackup() {  # WORKS!
 
 function DoUpgrade() {  # TESTING
 	echo "Performing Upgrade..."
-	cd crm.tcshosting.net
+	cd crm.tcshosting.net || return
 	php -d memory_limit=850M command.php upgrade 
 	# use the -y switch to automatically upgrade without prompting.
 	# -d memory_limit=524M will fix 'memory exhausted' errors.
 	# php command.php upgrade # Use the -y switch to automatically upgrade w/o prompting.
-	cd -
+	cd - || return
 }
 
