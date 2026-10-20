@@ -1,0 +1,97 @@
+best_compressor() {
+    local mode="balanced"
+    local target=""
+
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -s|--size)
+                mode="size"
+                shift
+                ;;
+            -f|--fast|--speed)
+                mode="speed"
+                shift
+                ;;
+            *)
+                target="$1"
+                shift
+                ;;
+        esac
+    done
+
+    # Validate target
+    if [[ -z "$target" ]]; then
+        echo "Usage: best_compressor [-s|--size | -f|--fast] <file_or_directory>"
+        return 1
+    fi
+
+    if [[ ! -e "$target" ]]; then
+        echo "Error: Target '$target' does not exist."
+        return 1
+    fi
+
+    # Evaluation Layer: Check if target is a directory
+    local is_dir=false
+    if [[ -d "$target" ]]; then
+        is_dir=true
+        # Remove trailing slash if present for cleaner output names
+        target="${target%/}"
+    fi
+
+    case "$mode" in
+        "size")
+            # Size priority: xz -> zstd -> bzip2 -> gzip
+            if command -v xz >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using xz (-9)..."
+                if $is_dir; then tar -cf - "$target" | xz -9 > "${target}.tar.xz"; else xz -9 -k "$target"; fi
+            elif command -v zstd >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using zstd (--ultra -22)..."
+                if $is_dir; then tar -cf - "$target" | zstd --ultra -22 > "${target}.tar.zst"; else zstd --ultra -22 "$target"; fi
+            elif command -v bzip2 >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using bzip2 (-9)..."
+                if $is_dir; then tar -cf - "$target" | bzip2 -9 > "${target}.tar.bz2"; else bzip2 -9 -k "$target"; fi
+            elif command -v gzip >/dev/null 2>&1; then
+                echo "Optimizing for SIZE: Using gzip (-9)..."
+                if $is_dir; then tar -cf - "$target" | gzip -9 > "${target}.tar.gz"; else gzip -9 -k "$target"; fi
+            else
+                echo "Error: No compression utilities found."
+                return 1
+            fi
+            ;;
+
+        "speed")
+            # Speed priority: lz4 -> zstd -> gzip
+            if command -v lz4 >/dev/null 2>&1; then
+                echo "Optimizing for SPEED: Using lz4..."
+                if $is_dir; then tar -cf - "$target" | lz4 - "${target}.tar.lz4"; else lz4 "$target" "${target}.lz4"; fi
+            elif command -v zstd >/dev/null 2>&1; then
+                echo "Optimizing for SPEED: Using zstd (-1)..."
+                if $is_dir; then tar -cf - "$target" | zstd -1 > "${target}.tar.zst"; else zstd -1 "$target"; fi
+            elif command -v gzip >/dev/null 2>&1; then
+                echo "Optimizing for SPEED: Using gzip (-1)..."
+                if $is_dir; then tar -cf - "$target" | gzip -1 > "${target}.tar.gz"; else gzip -1 -k "$target"; fi
+            else
+                echo "Error: No speed-optimized compression utilities found."
+                return 1
+            fi
+            ;;
+
+        "balanced")
+            # Balanced priority: zstd -> lz4 -> xz -> gzip
+            if command -v zstd >/dev/null 2>&1; then
+                echo "Using balanced zstd (-3)..."
+                if $is_dir; then tar -cf - "$target" | zstd -3 > "${target}.tar.zst"; else zstd -3 "$target"; fi
+            elif command -v lz4 >/dev/null 2>&1; then
+                echo "Using balanced lz4..."
+                if $is_dir; then tar -cf - "$target" | lz4 - "${target}.tar.lz4"; else lz4 "$target" "${target}.lz4"; fi
+            elif command -v xz >/dev/null 2>&1; then
+                echo "Using balanced xz (-6)..."
+                if $is_dir; then tar -cf - "$target" | xz -6 > "${target}.tar.xz"; else xz -6 -k "$target"; fi
+            else
+                echo "Using balanced gzip..."
+                if $is_dir; then tar -cf - "$target" | gzip > "${target}.tar.gz"; else gzip -k "$target"; fi
+            fi
+            ;;
+    esac
+}
