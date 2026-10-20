@@ -124,7 +124,7 @@ function DoBackup2() {
 	### $BackupCMD $BackupFileName.tar $AppFolder # Disabled for line below Oct 20, 2026
 	##### $BackupCMD "$BackupFileName".tar "$AppFolder" ### Superceded Oct 2026.
 	# $BackupCMD $BackupFolder/$BackupFileName-$Today $AppFolder
-	  $BackupCMD $BackupFolder/$BackupFileName-$Today.tar $AppFolder
+	   $BackupCMD "$BackupFolder"/"$BackupFileName"-"$Today".tar "$AppFolder"
 	echo "Backup Created Successfully."
 }
 
