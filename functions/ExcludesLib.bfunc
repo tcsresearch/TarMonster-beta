@@ -1,5 +1,5 @@
 function Find_ExcludedFiles() {
-        find | grep -f ./excludes-filtered2.list | tee ExcludedFiles.list
+        find | grep -f $(pwd)/excludes-filtered2.list | tee ExcludedFiles.list
 }
 
 function Remove_ExcludedFiles() {
