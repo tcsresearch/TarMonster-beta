@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# shellcheck source=/dev/null
+
 # BLING PreLoader Utility
-PreLoader_Version="26.10"
+PreLoader_Version="26.10.1"
+#	- Added shellcheck fix.
+
+#	Fixed in 26.10 #
 #	- Fixed output bug on Line 66: ${reset} was missing.
 #	- Moved to Colors2.conf
 #	- Colorized folder not found messasge on Line 73
