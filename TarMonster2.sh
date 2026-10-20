@@ -10,8 +10,8 @@
 ## First, we will import our variables ##
 # source ~/bin/TarMonster.vars
 
-# Conmfig to end on any non-zero error status
-# should fix the if stsement error exit dropping out of shell.
+# Config to end on any non-zero error status
+# should fix the if statement error exit dropping out of shell.
 
 function SetExitOnError() {
 	set -e
