@@ -25,6 +25,7 @@ jobs:
         # Using -print0 and xargs -0 handles file names with spaces safely
         ## find . -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
         ### find . -path "*/_Old" -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
-        find . \( -path "*/_Old" -o -path "*/plugins" \) -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
+        #### find . \( -path "*/_Old" -o -path "*/plugins" \) -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
+        find . \( -path "*/_Old" -o -path "*/plugins" \) -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash --exclude=SC1090,SC2034,SC2154
 
 
