@@ -9,7 +9,7 @@
 echo "Sourcing Files..."
 source "$(pwd)"/BLING/Cecho.bfunc # ColorEcho
 cecho green "Cecho Enabled."
-source "$(pwd)"/conf/TarMonster.vars # Variables
+source "$(pwd)"/conf/TarMonster.conf # Variables: fixed from .vars Nov 9, 2026.
 source "$(pwd)"/functions/TarMonster.bfunc # Functions
 # source functions/ExcludesLib.bfunc # New 07/05/2026
 
